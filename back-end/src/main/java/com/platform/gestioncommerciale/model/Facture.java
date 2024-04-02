@@ -24,6 +24,7 @@ public class Facture {
     @ManyToOne
     @JoinColumn(name = "id_user")
     private Utilisateur utilisateur_facture;
+    @ManyToOne
     @JoinColumn(name="id_client")
     private Client client;
 
