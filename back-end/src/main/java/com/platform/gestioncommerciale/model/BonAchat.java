@@ -3,6 +3,7 @@ package com.platform.gestioncommerciale.model;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
@@ -41,6 +42,8 @@ public class BonAchat {
     public void setUtilisateur_b_achat(Utilisateur utilisateur_b_achat) {
         this.utilisateur_b_achat = utilisateur_b_achat;
     }
+    @ManyToMany(mappedBy="bonAchats")
+    private List<Produit> produits;
 
     public BonAchat() {
     }
@@ -88,6 +91,14 @@ public class BonAchat {
 
     public void setStatue_bon_achat(String statue_bon_achat) {
         this.statue_bon_achat = statue_bon_achat;
+    }
+
+    public List<Produit> getProduits() {
+        return produits;
+    }
+
+    public void setProduits(List<Produit> produits) {
+        this.produits = produits;
     }
 
     @Override

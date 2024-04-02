@@ -3,6 +3,7 @@ package com.platform.gestioncommerciale.model;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
@@ -23,6 +24,13 @@ public class Facture {
     @ManyToOne
     @JoinColumn(name = "id_user")
     private Utilisateur utilisateur_facture;
+    @JoinColumn(name="id_client")
+    private Client client;
+
+
+    @ManyToMany
+    @JoinTable(name="Facture_Produit")
+    private List<Produit> produits;
 
     public Facture() {
     }
@@ -78,6 +86,21 @@ public class Facture {
 
     public void setUtilisateur_facture(Utilisateur utilisateur_facture) {
         this.utilisateur_facture = utilisateur_facture;
+    }
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public List<Produit> getProduits() {
+        return produits;
+    }
+
+    public void setProduits(List<Produit> produits) {
+        this.produits = produits;
     }
 
     @Override

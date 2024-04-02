@@ -2,6 +2,8 @@ package com.platform.gestioncommerciale.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table
 public class Client {
@@ -27,6 +29,8 @@ public class Client {
     @Column
     private String email_client;
 
+    @OneToMany(mappedBy="client")
+    private List<Facture> factures;
     public Client() {
     }
 
@@ -103,6 +107,14 @@ public class Client {
 
     public void setEmail_client(String email_client) {
         this.email_client = email_client;
+    }
+
+    public List<Facture> getFactures() {
+        return factures;
+    }
+
+    public void setFactures(List<Facture> factures) {
+        this.factures = factures;
     }
 
     @Override
