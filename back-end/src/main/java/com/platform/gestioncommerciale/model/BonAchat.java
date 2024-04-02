@@ -8,7 +8,7 @@ import java.util.Date;
 @Table
 public class BonAchat {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_bon_achat;
 
     @Column
@@ -17,6 +17,30 @@ public class BonAchat {
     private Date date_bon_achat;
     @Column
     private String statue_bon_achat;
+
+    @ManyToOne
+    @JoinColumn(name = "id_fourn")
+    private Fournisseur fournisseur;
+
+    @ManyToOne
+    @JoinColumn(name = "id_user")
+    private Utilisateur utilisateur_b_achat;
+
+    public Fournisseur getFournisseur() {
+        return fournisseur;
+    }
+
+    public void setFournisseur(Fournisseur fournisseur) {
+        this.fournisseur = fournisseur;
+    }
+
+    public Utilisateur getUtilisateur_b_achat() {
+        return utilisateur_b_achat;
+    }
+
+    public void setUtilisateur_b_achat(Utilisateur utilisateur_b_achat) {
+        this.utilisateur_b_achat = utilisateur_b_achat;
+    }
 
     public BonAchat() {
     }

@@ -2,11 +2,13 @@ package com.platform.gestioncommerciale.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table
 public class Fournisseur {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_fourn;
 
     @Column
@@ -20,6 +22,18 @@ public class Fournisseur {
 
     @Column
     private String email_fourn;
+
+
+    @OneToMany(mappedBy = "fournisseur")
+    private List<BonAchat> bonAchats;
+
+    public List<BonAchat> getBonAchats() {
+        return bonAchats;
+    }
+
+    public void setBonAchats(List<BonAchat> bonAchats) {
+        this.bonAchats = bonAchats;
+    }
 
     public Fournisseur() {
     }

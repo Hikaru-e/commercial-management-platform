@@ -8,7 +8,7 @@ import java.util.Date;
 @Table
 public class Facture {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_facture;
 
     @Column
@@ -19,6 +19,10 @@ public class Facture {
 
     @Column
     private Float montant_facture;
+
+    @ManyToOne
+    @JoinColumn(name = "id_user")
+    private Utilisateur utilisateur_facture;
 
     public Facture() {
     }
@@ -66,6 +70,14 @@ public class Facture {
 
     public void setMontant_facture(Float montant_facture) {
         this.montant_facture = montant_facture;
+    }
+
+    public Utilisateur getUtilisateur_facture() {
+        return utilisateur_facture;
+    }
+
+    public void setUtilisateur_facture(Utilisateur utilisateur_facture) {
+        this.utilisateur_facture = utilisateur_facture;
     }
 
     @Override

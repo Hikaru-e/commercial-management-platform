@@ -2,11 +2,13 @@ package com.platform.gestioncommerciale.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table
 public class Utilisateur {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_user;
     @Column
     private String nom_user;
@@ -20,6 +22,28 @@ public class Utilisateur {
     // maybe needs to be changed to an enum
     @Column
     private String role_user;
+
+    @OneToMany(mappedBy = "utilisateur_b_achat")
+    private List<BonAchat> bon_achats;
+
+    @OneToMany(mappedBy = "utilisateur_facture")
+    private List<Facture> factures;
+
+    public List<BonAchat> getBon_achats() {
+        return bon_achats;
+    }
+
+    public void setBon_achats(List<BonAchat> bon_achats) {
+        this.bon_achats = bon_achats;
+    }
+
+    public List<Facture> getFactures() {
+        return factures;
+    }
+
+    public void setFactures(List<Facture> factures) {
+        this.factures = factures;
+    }
 
     public Utilisateur() {
     }
