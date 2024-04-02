@@ -3,12 +3,13 @@ package com.platform.gestioncommerciale.model;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
 public class Facture {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_facture;
 
     @Column
@@ -19,6 +20,17 @@ public class Facture {
 
     @Column
     private Float montant_facture;
+
+    @ManyToOne
+    @JoinColumn(name="id_client")
+    private Client client;
+
+
+    @ManyToMany
+    @JoinTable(name="Facture_Produit")
+    private List<Produit> produits;
+
+
 
     public Facture() {
     }
@@ -66,6 +78,22 @@ public class Facture {
 
     public void setMontant_facture(Float montant_facture) {
         this.montant_facture = montant_facture;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public List<Produit> getProduits() {
+        return produits;
+    }
+
+    public void setProduits(List<Produit> produits) {
+        this.produits = produits;
     }
 
     @Override

@@ -3,12 +3,13 @@ package com.platform.gestioncommerciale.model;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
 public class BonAchat {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_bon_achat;
 
     @Column
@@ -17,6 +18,9 @@ public class BonAchat {
     private Date date_bon_achat;
     @Column
     private String statue_bon_achat;
+
+    @ManyToMany(mappedBy="bonAchats")
+    private List<Produit> produits;
 
     public BonAchat() {
     }
@@ -64,6 +68,16 @@ public class BonAchat {
 
     public void setStatue_bon_achat(String statue_bon_achat) {
         this.statue_bon_achat = statue_bon_achat;
+    }
+
+
+
+    public List<Produit> getProduits() {
+        return produits;
+    }
+
+    public void setProduits(List<Produit> produits) {
+        this.produits = produits;
     }
 
     @Override

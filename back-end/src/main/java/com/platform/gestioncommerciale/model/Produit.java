@@ -2,11 +2,13 @@ package com.platform.gestioncommerciale.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table
 public class Produit {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_pdt;
     @Column
     private String categorie_pdt;
@@ -14,6 +16,13 @@ public class Produit {
     private Float prix_pdt;
     @Column
     private Integer nv_stock_pdt;
+
+    @ManyToMany(mappedBy="produits")
+    private List<Facture> factures;
+
+    @ManyToMany
+    @JoinTable(name="Facture_BonAchat")
+    private List<BonAchat> bonAchats;
 
     public Produit() {
     }
@@ -61,6 +70,22 @@ public class Produit {
 
     public void setNv_stock_pdt(Integer nv_stock_pdt) {
         this.nv_stock_pdt = nv_stock_pdt;
+    }
+
+    public List<Facture> getFactures() {
+        return factures;
+    }
+
+    public void setFactures(List<Facture> factures) {
+        this.factures = factures;
+    }
+
+    public List<BonAchat> getBonAchats() {
+        return bonAchats;
+    }
+
+    public void setBonAchats(List<BonAchat> bonAchats) {
+        this.bonAchats = bonAchats;
     }
 
     @Override
