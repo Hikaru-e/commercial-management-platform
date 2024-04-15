@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+.login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./R.jfif');
+    background-size: cover;
+}
+
+mat-card {
+    width: 400px;
+    background-color: rgba(208, 208, 208, 0.8); /* Couleur de fond avec transparence */
+    backdrop-filter: blur(0.1px); /* Flou du fond */
+    border-radius: 25px; /* Coins arrondis */
+  }
+
+ 
+
+  mat-card-header{
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .custom-input {
+    width: 100%;
+   
+  }
+  
+  .button-container{
+    text-align: center; 
+  }
+  
+  /* Styles personnalisés pour les icônes */
+  mat-icon {
+    color: #000000; /* Couleur de l'icône */
+  }
