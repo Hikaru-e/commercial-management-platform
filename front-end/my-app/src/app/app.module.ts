@@ -11,12 +11,16 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { HeadrComponent } from './headr/headr.component';
+import { FootrComponent } from './footr/footr.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HeadrComponent,
+    FootrComponent
    
   ],
   imports: [
