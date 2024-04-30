@@ -11,7 +11,11 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { HeadrComponent } from './headr/headr.component';
+import { HeaderComponent } from './header/header.component';
+
+import { ClientComponent } from './client/client.component';
+import { MatListModule } from '@angular/material/list';
+import { HelloComponent } from './home/hello/hello.component';
 import { FootrComponent } from './footr/footr.component';
 
 
@@ -19,7 +23,9 @@ import { FootrComponent } from './footr/footr.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    HeadrComponent,
+    HeaderComponent,
+    HelloComponent,
+    ClientComponent,
     FootrComponent
    
   ],
@@ -31,7 +37,8 @@ import { FootrComponent } from './footr/footr.component';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+     MatListModule 
   ],
   providers: [
     provideClientHydration(),
