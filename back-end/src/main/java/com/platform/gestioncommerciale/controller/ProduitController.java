@@ -42,15 +42,5 @@ public class ProduitController {
     }
 
 
-    @GetMapping("/en_stock")
-    public List<Produit> getProduitsEnStock() {
-        return produitService.getProduitsEnStock();
-    }
-
-    @GetMapping("/hors_stock")
-    public List<Produit> getProduitsHorsStock() {
-        return produitService.getProduitsHorsStock();
-    }
-
 
 }

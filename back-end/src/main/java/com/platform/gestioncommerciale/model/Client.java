@@ -2,11 +2,12 @@ package com.platform.gestioncommerciale.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table
-public class Client {
+public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_client;
@@ -15,10 +16,10 @@ public class Client {
     private String cne_client;
 
     @Column
-    private String nom_client;
+    private String nomClient;
 
     @Column
-    private String prenom_client;
+    private String prenomClient;
 
     @Column
     private String adresse_client;
@@ -34,20 +35,20 @@ public class Client {
     public Client() {
     }
 
-    public Client(Long id_client, String cne_client, String nom_client, String prenom_client, String adresse_client, Integer tel_client, String email_client) {
+    public Client(Long id_client, String cne_client, String nomClient, String prenomClient, String adresse_client, Integer tel_client, String email_client) {
         this.id_client = id_client;
         this.cne_client = cne_client;
-        this.nom_client = nom_client;
-        this.prenom_client = prenom_client;
+        this.nomClient = nomClient;
+        this.prenomClient = prenomClient;
         this.adresse_client = adresse_client;
         this.tel_client = tel_client;
         this.email_client = email_client;
     }
 
-    public Client(String cne_client, String nom_client, String prenom_client, String adresse_client, Integer tel_client, String email_client) {
+    public Client(String cne_client, String nomClient, String prenomClient, String adresse_client, Integer tel_client, String email_client) {
         this.cne_client = cne_client;
-        this.nom_client = nom_client;
-        this.prenom_client = prenom_client;
+        this.nomClient = nomClient;
+        this.prenomClient = prenomClient;
         this.adresse_client = adresse_client;
         this.tel_client = tel_client;
         this.email_client = email_client;
@@ -69,20 +70,20 @@ public class Client {
         this.cne_client = cne_client;
     }
 
-    public String getNom_client() {
-        return nom_client;
+    public String getnomClient() {
+        return nomClient;
     }
 
-    public void setNom_client(String nom_client) {
-        this.nom_client = nom_client;
+    public void setnomClient(String nomClient) {
+        this.nomClient = nomClient;
     }
 
-    public String getPrenom_client() {
-        return prenom_client;
+    public String getPrenomClient() {
+        return prenomClient;
     }
 
-    public void setPrenom_client(String prenom_client) {
-        this.prenom_client = prenom_client;
+    public void setPrenomClient(String prenomClient) {
+        this.prenomClient = prenomClient;
     }
 
     public String getAdresse_client() {
@@ -122,8 +123,8 @@ public class Client {
         return "Client{" +
                 "id_client=" + id_client +
                 ", cne_client='" + cne_client + '\'' +
-                ", nom_client='" + nom_client + '\'' +
-                ", prenom_client='" + prenom_client + '\'' +
+                ", nomClient='" + nomClient + '\'' +
+                ", prenomClient='" + prenomClient + '\'' +
                 ", adresse_client='" + adresse_client + '\'' +
                 ", tel_client=" + tel_client +
                 ", email_client='" + email_client + '\'' +

@@ -12,7 +12,7 @@ public class Fournisseur {
     private Long id_fourn;
 
     @Column
-    private String nom_societe;
+    private String nomSociete;
 
     @Column
     private String adress_fourn;
@@ -40,14 +40,14 @@ public class Fournisseur {
 
     public Fournisseur(Long id_fourn, String nom_societe, String adress_fourn, Integer tel_fourn, String email_fourn) {
         this.id_fourn = id_fourn;
-        this.nom_societe = nom_societe;
+        this.nomSociete = nom_societe;
         this.adress_fourn = adress_fourn;
         this.tel_fourn = tel_fourn;
         this.email_fourn = email_fourn;
     }
 
     public Fournisseur(String nom_societe, String adress_fourn, Integer tel_fourn, String email_fourn) {
-        this.nom_societe = nom_societe;
+        this.nomSociete = nom_societe;
         this.adress_fourn = adress_fourn;
         this.tel_fourn = tel_fourn;
         this.email_fourn = email_fourn;
@@ -62,11 +62,11 @@ public class Fournisseur {
     }
 
     public String getNom_societe() {
-        return nom_societe;
+        return nomSociete;
     }
 
     public void setNom_societe(String nom_societe) {
-        this.nom_societe = nom_societe;
+        this.nomSociete = nom_societe;
     }
 
     public String getAdress_fourn() {
@@ -97,7 +97,7 @@ public class Fournisseur {
     public String toString() {
         return "Fournisseur{" +
                 "id_fourn=" + id_fourn +
-                ", nom_societe='" + nom_societe + '\'' +
+                ", nom_societe='" + nomSociete + '\'' +
                 ", adress_fourn='" + adress_fourn + '\'' +
                 ", tel_fourn=" + tel_fourn +
                 ", email_fourn='" + email_fourn + '\'' +
