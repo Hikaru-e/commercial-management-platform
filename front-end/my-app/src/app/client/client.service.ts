@@ -1,35 +1,31 @@
 import { Injectable } from '@angular/core';
+import axios from 'axios';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
-  clients = [
-    { id: 1, name: 'Client 1' },
-    { id: 2, name: 'Client 2' },
-    { id: 3, name: 'Client 3' },
-    { id: 4, name: 'Client 4' },
-    { id: 5, name: 'Client 5' }
-  ];
+  private baseUrl = 'http://localhost:8080/clients'; // Mettez votre URL de backend ici
 
   constructor() { }
 
   getClients() {
-    return this.clients;
+    return axios.get(`${this.baseUrl}/all`);
   }
 
   addClient(client: any) {
-    this.clients.push(client);
+    return axios.post(`${this.baseUrl}/add`, client);
   }
 
   deleteClient(id: number) {
-    this.clients = this.clients.filter(client => client.id !== id);
+    return axios.delete(`${this.baseUrl}/delete/${id}`);
   }
 
   updateClient(id: number, newName: string) {
-    const client = this.clients.find(client => client.id === id);
-    if (client) {
-      client.name = newName;
-    }
+    return axios.put(`${this.baseUrl}/modify/${id}`, { name: newName });
+  }
+
+  searchClientByName(nomClient: string) {
+    return axios.get(`${this.baseUrl}/search_name/${nomClient}`);
   }
 }

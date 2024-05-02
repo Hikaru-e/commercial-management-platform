@@ -17,6 +17,10 @@ import { ClientComponent } from './client/client.component';
 import { MatListModule } from '@angular/material/list';
 import { HelloComponent } from './home/hello/hello.component';
 import { FootrComponent } from './footr/footr.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { EditClientDialogComponentComponent } from './client/edit-client-dialog-component/edit-client-dialog-component.component';
+
+
 
 
 @NgModule({
@@ -26,13 +30,15 @@ import { FootrComponent } from './footr/footr.component';
     HeaderComponent,
     HelloComponent,
     ClientComponent,
-    FootrComponent
+    FootrComponent,
+    EditClientDialogComponentComponent
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    MatDialogModule,
     MatCardModule, // Ajoutez MatCardModule aux imports
     MatFormFieldModule,
     MatIconModule,
