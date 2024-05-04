@@ -10,10 +10,10 @@ import java.util.List;
 public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_client;
+    private Long idClient;
 
     @Column
-    private String cne_client;
+    private String cneClient;
 
     @Column
     private String nomClient;
@@ -22,59 +22,61 @@ public class Client implements Serializable {
     private String prenomClient;
 
     @Column
-    private String adresse_client;
+    private String adresseClient;
 
     @Column
-    private Integer tel_client;
+    private Integer telClient;
 
     @Column
-    private String email_client;
+    private String emailClient;
 
     @OneToMany(mappedBy="client")
     private List<Facture> factures;
     public Client() {
     }
 
-    public Client(Long id_client, String cne_client, String nomClient, String prenomClient, String adresse_client, Integer tel_client, String email_client) {
-        this.id_client = id_client;
-        this.cne_client = cne_client;
+    public Client(String cneClient, String nomClient, String prenomClient, String adresseClient, Integer telClient, String emailClient, List<Facture> factures) {
+        this.cneClient = cneClient;
         this.nomClient = nomClient;
         this.prenomClient = prenomClient;
-        this.adresse_client = adresse_client;
-        this.tel_client = tel_client;
-        this.email_client = email_client;
+        this.adresseClient = adresseClient;
+        this.telClient = telClient;
+        this.emailClient = emailClient;
+        this.factures = factures;
     }
 
-    public Client(String cne_client, String nomClient, String prenomClient, String adresse_client, Integer tel_client, String email_client) {
-        this.cne_client = cne_client;
+    public Client(Long idClient, String cneClient, String nomClient, String prenomClient, String adresseClient, Integer telClient, String emailClient, List<Facture> factures) {
+        this.idClient = idClient;
+        this.cneClient = cneClient;
         this.nomClient = nomClient;
         this.prenomClient = prenomClient;
-        this.adresse_client = adresse_client;
-        this.tel_client = tel_client;
-        this.email_client = email_client;
+        this.adresseClient = adresseClient;
+        this.telClient = telClient;
+        this.emailClient = emailClient;
+        this.factures = factures;
     }
 
-    public Long getId_client() {
-        return id_client;
+    public Long getIdClient() {
+        return idClient;
     }
 
-    public void setId_client(Long id_client) {
-        this.id_client = id_client;
+    public void setIdClient(Long idClient) {
+        this.idClient = idClient;
     }
 
-    public String getCne_client() {
-        return cne_client;
+    public String getCneClient() {
+        return cneClient;
     }
 
-    public void setCne_client(String cne_client) {
-        this.cne_client = cne_client;
+    public void setCneClient(String cneClient) {
+        this.cneClient = cneClient;
     }
 
-    public String getnomClient() {
+    public String getNomClient() {
         return nomClient;
     }
 
-    public void setnomClient(String nomClient) {
+    public void setNomClient(String nomClient) {
         this.nomClient = nomClient;
     }
 
@@ -86,28 +88,28 @@ public class Client implements Serializable {
         this.prenomClient = prenomClient;
     }
 
-    public String getAdresse_client() {
-        return adresse_client;
+    public String getAdresseClient() {
+        return adresseClient;
     }
 
-    public void setAdresse_client(String adresse_client) {
-        this.adresse_client = adresse_client;
+    public void setAdresseClient(String adresseClient) {
+        this.adresseClient = adresseClient;
     }
 
-    public Integer getTel_client() {
-        return tel_client;
+    public Integer getTelClient() {
+        return telClient;
     }
 
-    public void setTel_client(Integer tel_client) {
-        this.tel_client = tel_client;
+    public void setTelClient(Integer telClient) {
+        this.telClient = telClient;
     }
 
-    public String getEmail_client() {
-        return email_client;
+    public String getEmailClient() {
+        return emailClient;
     }
 
-    public void setEmail_client(String email_client) {
-        this.email_client = email_client;
+    public void setEmailClient(String emailClient) {
+        this.emailClient = emailClient;
     }
 
     public List<Facture> getFactures() {
@@ -121,13 +123,14 @@ public class Client implements Serializable {
     @Override
     public String toString() {
         return "Client{" +
-                "id_client=" + id_client +
-                ", cne_client='" + cne_client + '\'' +
+                "idClient=" + idClient +
+                ", cneClient='" + cneClient + '\'' +
                 ", nomClient='" + nomClient + '\'' +
                 ", prenomClient='" + prenomClient + '\'' +
-                ", adresse_client='" + adresse_client + '\'' +
-                ", tel_client=" + tel_client +
-                ", email_client='" + email_client + '\'' +
+                ", adresseClient='" + adresseClient + '\'' +
+                ", telClient=" + telClient +
+                ", emailClient='" + emailClient + '\'' +
+                ", factures=" + factures +
                 '}';
     }
 }

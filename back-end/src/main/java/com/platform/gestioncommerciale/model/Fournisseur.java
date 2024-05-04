@@ -9,23 +9,83 @@ import java.util.List;
 public class Fournisseur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_fourn;
+    private Long idFourn;
 
     @Column
     private String nomSociete;
 
     @Column
-    private String adress_fourn;
+    private String adressFourn;
 
     @Column
-    private Integer tel_fourn;
+    private Integer telFourn;
 
     @Column
-    private String email_fourn;
+    private String emailFourn;
 
 
     @OneToMany(mappedBy = "fournisseur")
     private List<BonAchat> bonAchats;
+
+    public Fournisseur() {
+    }
+
+    public Fournisseur(String nomSociete, String adressFourn, Integer telFourn, String emailFourn, List<BonAchat> bonAchats) {
+        this.nomSociete = nomSociete;
+        this.adressFourn = adressFourn;
+        this.telFourn = telFourn;
+        this.emailFourn = emailFourn;
+        this.bonAchats = bonAchats;
+    }
+
+    public Fournisseur(Long idFourn, String nomSociete, String adressFourn, Integer telFourn, String emailFourn, List<BonAchat> bonAchats) {
+        this.idFourn = idFourn;
+        this.nomSociete = nomSociete;
+        this.adressFourn = adressFourn;
+        this.telFourn = telFourn;
+        this.emailFourn = emailFourn;
+        this.bonAchats = bonAchats;
+    }
+
+    public Long getIdFourn() {
+        return idFourn;
+    }
+
+    public void setIdFourn(Long idFourn) {
+        this.idFourn = idFourn;
+    }
+
+    public String getNomSociete() {
+        return nomSociete;
+    }
+
+    public void setNomSociete(String nomSociete) {
+        this.nomSociete = nomSociete;
+    }
+
+    public String getAdressFourn() {
+        return adressFourn;
+    }
+
+    public void setAdressFourn(String adressFourn) {
+        this.adressFourn = adressFourn;
+    }
+
+    public Integer getTelFourn() {
+        return telFourn;
+    }
+
+    public void setTelFourn(Integer telFourn) {
+        this.telFourn = telFourn;
+    }
+
+    public String getEmailFourn() {
+        return emailFourn;
+    }
+
+    public void setEmailFourn(String emailFourn) {
+        this.emailFourn = emailFourn;
+    }
 
     public List<BonAchat> getBonAchats() {
         return bonAchats;
@@ -35,72 +95,15 @@ public class Fournisseur {
         this.bonAchats = bonAchats;
     }
 
-    public Fournisseur() {
-    }
-
-    public Fournisseur(Long id_fourn, String nom_societe, String adress_fourn, Integer tel_fourn, String email_fourn) {
-        this.id_fourn = id_fourn;
-        this.nomSociete = nom_societe;
-        this.adress_fourn = adress_fourn;
-        this.tel_fourn = tel_fourn;
-        this.email_fourn = email_fourn;
-    }
-
-    public Fournisseur(String nom_societe, String adress_fourn, Integer tel_fourn, String email_fourn) {
-        this.nomSociete = nom_societe;
-        this.adress_fourn = adress_fourn;
-        this.tel_fourn = tel_fourn;
-        this.email_fourn = email_fourn;
-    }
-
-    public Long getId_fourn() {
-        return id_fourn;
-    }
-
-    public void setId_fourn(Long id_fourn) {
-        this.id_fourn = id_fourn;
-    }
-
-    public String getNom_societe() {
-        return nomSociete;
-    }
-
-    public void setNom_societe(String nom_societe) {
-        this.nomSociete = nom_societe;
-    }
-
-    public String getAdress_fourn() {
-        return adress_fourn;
-    }
-
-    public void setAdress_fourn(String adress_fourn) {
-        this.adress_fourn = adress_fourn;
-    }
-
-    public Integer getTel_fourn() {
-        return tel_fourn;
-    }
-
-    public void setTel_fourn(Integer tel_fourn) {
-        this.tel_fourn = tel_fourn;
-    }
-
-    public String getEmail_fourn() {
-        return email_fourn;
-    }
-
-    public void setEmail_fourn(String email_fourn) {
-        this.email_fourn = email_fourn;
-    }
-
     @Override
     public String toString() {
         return "Fournisseur{" +
-                "id_fourn=" + id_fourn +
-                ", nom_societe='" + nomSociete + '\'' +
-                ", adress_fourn='" + adress_fourn + '\'' +
-                ", tel_fourn=" + tel_fourn +
-                ", email_fourn='" + email_fourn + '\'' +
+                "idFourn=" + idFourn +
+                ", nomSociete='" + nomSociete + '\'' +
+                ", adressFourn='" + adressFourn + '\'' +
+                ", telFourn=" + telFourn +
+                ", emailFourn='" + emailFourn + '\'' +
+                ", bonAchats=" + bonAchats +
                 '}';
     }
 }

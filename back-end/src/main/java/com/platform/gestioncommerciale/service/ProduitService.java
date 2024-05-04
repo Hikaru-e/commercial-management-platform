@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 @Service
 public class ProduitService {
 
@@ -29,5 +31,16 @@ public class ProduitService {
         produitRepo.deleteById(id);
     }
 
+    public List<Produit> getProduitsEnStock() {
+        return produitRepo.findAll().stream()
+                .filter(produit -> produit.getNvStockPdt() > 0)
+                .collect(Collectors.toList());
+    }
+
+    public List<Produit> getProduitsHorsStock() {
+        return produitRepo.findAll().stream()
+                .filter(produit -> produit.getNvStockPdt() <= 0)
+                .collect(Collectors.toList());
+    }
 
 }

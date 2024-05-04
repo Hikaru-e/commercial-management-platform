@@ -1,4 +1,5 @@
 package com.platform.gestioncommerciale.controller;
+import com.platform.gestioncommerciale.model.BonAchat;
 import com.platform.gestioncommerciale.model.Fournisseur;
 import com.platform.gestioncommerciale.service.FournisseurService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class FournisseurController {
         return fournisseurService.getFournisseurById(id);
     }
 
+    @GetMapping("/search_name/{nomSociete}")
+    public  List<Fournisseur> findFournisseurByNom(@PathVariable String nomSociete) {
+        return fournisseurService.findByNomFournisseur(nomSociete);
+    }
+
     @PostMapping("/add")
     public Fournisseur addFournisseur(@RequestBody Fournisseur fournisseur) {
         return fournisseurService.addOrUpdateClientFournisseur(fournisseur);
@@ -31,7 +37,7 @@ public class FournisseurController {
 
     @PutMapping("/modify/{id}")
     public Fournisseur updateFournisseur(@PathVariable Long id,@RequestBody Fournisseur fournisseur) {
-        fournisseur.setId_fourn(id);
+        fournisseur.setIdFourn(id);
         return fournisseurService.addOrUpdateClientFournisseur(fournisseur);
     }
 
@@ -40,11 +46,9 @@ public class FournisseurController {
         fournisseurService.deleteFournisseur(id);
     }
 
-
-    @GetMapping("/search_name/{nomSociete}")
-    public  List<Fournisseur> findFournisseurByNom(@PathVariable String nomSociete) {
-        return fournisseurService.findByNomFournisseur(nomSociete);
+    @GetMapping("/historique_achats/{id}")
+    public List<BonAchat> getHistoriqueAchats(@PathVariable Long id) {
+        return fournisseurService.getHistoriqueAchats(id);
     }
-
 
 }

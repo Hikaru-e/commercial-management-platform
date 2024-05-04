@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface ClientRepo extends JpaRepository<Client,Long> {
 
-    List<Client> findByNomClient(String nom_client);
+    List<Client> findByNomClient(String nomClient);
 
 
 }

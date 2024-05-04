@@ -32,7 +32,7 @@ public class ProduitController {
 
     @PutMapping("/modify/{id}")
     public Produit updateProduit(@PathVariable Long id, @RequestBody Produit produit){
-        produit.setId_pdt(id);
+        produit.setIdPdt(id);
         return produitService.addOrUpdateProduit(produit);
     }
 
@@ -41,6 +41,15 @@ public class ProduitController {
         produitService.deleteProduit(id);
     }
 
+    @GetMapping("/en_stock")
+    public List<Produit> getProduitsEnStock() {
+        return produitService.getProduitsEnStock();
+    }
+
+    @GetMapping("/hors_stock")
+    public List<Produit> getProduitsHorsStock() {
+        return produitService.getProduitsHorsStock();
+    }
 
 
 }

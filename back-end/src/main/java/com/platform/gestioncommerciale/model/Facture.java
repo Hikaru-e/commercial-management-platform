@@ -10,84 +10,92 @@ import java.util.List;
 public class Facture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_facture;
+    private Long idFacture;
 
     @Column
-    private Date date_facture;
+    private Date dateFacture;
 
     @Column
-    private String mode_de_paimenet;
+    private String modePaiment;
 
     @Column
-    private Float montant_facture;
+    private Float montantFacture;
 
     @ManyToOne
-    @JoinColumn(name = "id_user")
-    private Utilisateur utilisateur_facture;
+    @JoinColumn(name = "idUser")
+    private Utilisateur utilisateurFacture;
     @ManyToOne
-    @JoinColumn(name="id_client")
+    @JoinColumn(name="idClient")
     private Client client;
 
-
     @ManyToMany
-    @JoinTable(name="Facture_Produit")
-    private List<Produit> produits;
+    @JoinTable(name="facture_produit",
+        joinColumns = @JoinColumn(name="idFacture"),
+        inverseJoinColumns = @JoinColumn(name="idPdt"))
+    private List<Produit> produitsFactures;
 
     public Facture() {
     }
 
-    public Facture(Long id_facture, Date date_facture, String mode_de_paimenet, Float montant_facture) {
-        this.id_facture = id_facture;
-        this.date_facture = date_facture;
-        this.mode_de_paimenet = mode_de_paimenet;
-        this.montant_facture = montant_facture;
+    public Facture(Date dateFacture, String modePaiment, Float montantFacture, Utilisateur utilisateurFacture, Client client, List<Produit> produitsFactures) {
+        this.dateFacture = dateFacture;
+        this.modePaiment = modePaiment;
+        this.montantFacture = montantFacture;
+        this.utilisateurFacture = utilisateurFacture;
+        this.client = client;
+        this.produitsFactures = produitsFactures;
     }
 
-    public Facture(Date date_facture, String mode_de_paimenet, Float montant_facture) {
-        this.date_facture = date_facture;
-        this.mode_de_paimenet = mode_de_paimenet;
-        this.montant_facture = montant_facture;
+    public Facture(Long idFacture, Date dateFacture, String modePaiment, Float montantFacture, Utilisateur utilisateurFacture, Client client, List<Produit> produitsFactures) {
+        this.idFacture = idFacture;
+        this.dateFacture = dateFacture;
+        this.modePaiment = modePaiment;
+        this.montantFacture = montantFacture;
+        this.utilisateurFacture = utilisateurFacture;
+        this.client = client;
+        this.produitsFactures = produitsFactures;
     }
 
-    public Long getId_facture() {
-        return id_facture;
+    public Long getIdFacture() {
+        return idFacture;
     }
 
-    public void setId_facture(Long id_facture) {
-        this.id_facture = id_facture;
+    public void setIdFacture(Long idFacture) {
+        this.idFacture = idFacture;
     }
 
-    public Date getDate_facture() {
-        return date_facture;
+    public Date getDateFacture() {
+        return dateFacture;
     }
 
-    public void setDate_facture(Date date_facture) {
-        this.date_facture = date_facture;
+    public void setDateFacture(Date dateFacture) {
+        this.dateFacture = dateFacture;
     }
 
-    public String getMode_de_paimenet() {
-        return mode_de_paimenet;
+    public String getModePaiment() {
+        return modePaiment;
     }
 
-    public void setMode_de_paimenet(String mode_de_paimenet) {
-        this.mode_de_paimenet = mode_de_paimenet;
+    public void setModePaiment(String modePaiment) {
+        this.modePaiment = modePaiment;
     }
 
-    public Float getMontant_facture() {
-        return montant_facture;
+    public Float getMontantFacture() {
+        return montantFacture;
     }
 
-    public void setMontant_facture(Float montant_facture) {
-        this.montant_facture = montant_facture;
+    public void setMontantFacture(Float montantFacture) {
+        this.montantFacture = montantFacture;
     }
 
-    public Utilisateur getUtilisateur_facture() {
-        return utilisateur_facture;
+    public Utilisateur getUtilisateurFacture() {
+        return utilisateurFacture;
     }
 
-    public void setUtilisateur_facture(Utilisateur utilisateur_facture) {
-        this.utilisateur_facture = utilisateur_facture;
+    public void setUtilisateurFacture(Utilisateur utilisateurFacture) {
+        this.utilisateurFacture = utilisateurFacture;
     }
+
     public Client getClient() {
         return client;
     }
@@ -96,21 +104,24 @@ public class Facture {
         this.client = client;
     }
 
-    public List<Produit> getProduits() {
-        return produits;
+    public List<Produit> getProduitsFactures() {
+        return produitsFactures;
     }
 
-    public void setProduits(List<Produit> produits) {
-        this.produits = produits;
+    public void setProduitsFactures(List<Produit> produitsFactures) {
+        this.produitsFactures = produitsFactures;
     }
 
     @Override
     public String toString() {
         return "Facture{" +
-                "id_facture=" + id_facture +
-                ", date_facture=" + date_facture +
-                ", mode_de_paimenet='" + mode_de_paimenet + '\'' +
-                ", montant_facture=" + montant_facture +
+                "idFacture=" + idFacture +
+                ", dateFacture=" + dateFacture +
+                ", modePaiment='" + modePaiment + '\'' +
+                ", montantFacture=" + montantFacture +
+                ", utilisateurFacture=" + utilisateurFacture +
+                ", client=" + client +
+                ", produitsFactures=" + produitsFactures +
                 '}';
     }
 }
