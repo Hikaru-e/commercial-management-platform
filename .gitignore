@@ -2,3 +2,4 @@
 /front-end/my-app/.vscode/
 /front-end/my-app/node_modules/
 .idea
+.m2/
