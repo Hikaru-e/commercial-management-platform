@@ -15,12 +15,24 @@ import { HeaderComponent } from './header/header.component';
 
 import { ClientComponent } from './client/client.component';
 import { MatListModule } from '@angular/material/list';
-import { HelloComponent } from './home/hello/hello.component';
+
 import { FootrComponent } from './footr/footr.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditClientDialogComponentComponent } from './client/edit-client-dialog-component/edit-client-dialog-component.component';
 
+import { BaseChartDirective } from 'ng2-charts';
 
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { EditFournisseurDialogComponentComponent } from './fournisseur/edit-fournisseur-dialog-component/edit-fournisseur-dialog-component.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+import { CommonModule } from '@angular/common'; // Importez CommonModule
+import { HomePageComponent } from './home-page/home-page.component';
+
+import { FournisseurComponent } from './fournisseur/fournisseur.component';
+import { BondachatComponent } from './bondachat/bondachat.component';
+import { FactureComponent } from './facture/facture.component';
 
 
 @NgModule({
@@ -28,10 +40,15 @@ import { EditClientDialogComponentComponent } from './client/edit-client-dialog-
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    HelloComponent,
+ 
     ClientComponent,
     FootrComponent,
-    EditClientDialogComponentComponent
+    EditFournisseurDialogComponentComponent,
+    HomePageComponent,
+    FournisseurComponent,
+    EditClientDialogComponentComponent,
+    BondachatComponent,
+    FactureComponent
    
   ],
   imports: [
@@ -44,12 +61,14 @@ import { EditClientDialogComponentComponent } from './client/edit-client-dialog-
     MatIconModule,
     MatInputModule,
     MatButtonModule,
-     MatListModule 
+     MatListModule ,
+     BaseChartDirective,
+     CommonModule,
+     BrowserAnimationsModule
+   
   ],
-  providers: [
-    provideClientHydration(),
-    provideAnimationsAsync()
-  ],
-  bootstrap: [AppComponent]
+  providers: [provideCharts(withDefaultRegisterables())],
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
