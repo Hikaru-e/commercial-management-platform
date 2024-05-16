@@ -1,0 +1,23 @@
+<app-header></app-header>
+
+<mat-list>
+  <mat-list-item *ngFor="let client of clients">
+    <div class="client-item">
+      <div mat-line>{{ client.id_client }}</div>
+      <div>
+        <button mat-icon-button color="primary" (click)="startEditingClient(client.id_client)">
+          <mat-icon>edit</mat-icon>
+        </button>        
+        <button mat-icon-button color="warn" (click)="deleteClient(client.id_client)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-list-item>
+</mat-list>
+
+
+
+
+
+<button mat-raised-button color="primary" (click)="addClient()">Add Client</button>

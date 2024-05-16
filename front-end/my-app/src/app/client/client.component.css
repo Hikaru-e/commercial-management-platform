@@ -1,0 +1,22 @@
+.client-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+mat-card {
+  max-width: 400px;
+  margin: 0 auto;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+mat-card.ng-animating {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.edit-form {
+  background-color: rgba(255, 255, 255, 0.8); /* Couleur de fond semi-transparente */
+  backdrop-filter: blur(5px); /* Appliquer un flou à l'arrière-plan */
+}
