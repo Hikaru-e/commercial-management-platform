@@ -10,22 +10,83 @@ import java.util.List;
 public class BonAchat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_bon_achat;
+    private Long idBonAchat;
 
     @Column
-    private Float montant_bon_achat;
+    private Float montantBonAchat;
     @Column
-    private Date date_bon_achat;
+    private Date dateBonAchat;
     @Column
-    private String statue_bon_achat;
+    private String statueBonAchat;
 
     @ManyToOne
-    @JoinColumn(name = "id_fourn")
+    @JoinColumn(name = "idFourn")
     private Fournisseur fournisseur;
 
     @ManyToOne
-    @JoinColumn(name = "id_user")
-    private Utilisateur utilisateur_b_achat;
+    @JoinColumn(name = "idUser")
+    private Utilisateur utilisateurBonAchat;
+
+
+    @ManyToMany
+    @JoinTable(name="bonachat_produit",
+            joinColumns = @JoinColumn(name="idBonAchat"),
+            inverseJoinColumns = @JoinColumn(name="idPdt"))
+    private List<Produit> produitsBonAchats;
+
+    public BonAchat() {
+    }
+
+    public BonAchat(Float montantBonAchat, Date dateBonAchat, String statueBonAchat, Fournisseur fournisseur, Utilisateur utilisateurBonAchat, List<Produit> produitsBonAchats) {
+        this.montantBonAchat = montantBonAchat;
+        this.dateBonAchat = dateBonAchat;
+        this.statueBonAchat = statueBonAchat;
+        this.fournisseur = fournisseur;
+        this.utilisateurBonAchat = utilisateurBonAchat;
+        this.produitsBonAchats = produitsBonAchats;
+    }
+
+    public BonAchat(Long idBonAchat, Float montantBonAchat, Date dateBonAchat, String statueBonAchat, Fournisseur fournisseur, Utilisateur utilisateurBonAchat, List<Produit> produitsBonAchats) {
+        this.idBonAchat = idBonAchat;
+        this.montantBonAchat = montantBonAchat;
+        this.dateBonAchat = dateBonAchat;
+        this.statueBonAchat = statueBonAchat;
+        this.fournisseur = fournisseur;
+        this.utilisateurBonAchat = utilisateurBonAchat;
+        this.produitsBonAchats = produitsBonAchats;
+    }
+
+    public Long getIdBonAchat() {
+        return idBonAchat;
+    }
+
+    public void setIdBonAchat(Long idBonAchat) {
+        this.idBonAchat = idBonAchat;
+    }
+
+    public Float getMontantBonAchat() {
+        return montantBonAchat;
+    }
+
+    public void setMontantBonAchat(Float montantBonAchat) {
+        this.montantBonAchat = montantBonAchat;
+    }
+
+    public Date getDateBonAchat() {
+        return dateBonAchat;
+    }
+
+    public void setDateBonAchat(Date dateBonAchat) {
+        this.dateBonAchat = dateBonAchat;
+    }
+
+    public String getStatueBonAchat() {
+        return statueBonAchat;
+    }
+
+    public void setStatueBonAchat(String statueBonAchat) {
+        this.statueBonAchat = statueBonAchat;
+    }
 
     public Fournisseur getFournisseur() {
         return fournisseur;
@@ -35,79 +96,37 @@ public class BonAchat {
         this.fournisseur = fournisseur;
     }
 
-    public Utilisateur getUtilisateur_b_achat() {
-        return utilisateur_b_achat;
+    public Utilisateur getUtilisateurBonAchat() {
+        return utilisateurBonAchat;
     }
 
-    public void setUtilisateur_b_achat(Utilisateur utilisateur_b_achat) {
-        this.utilisateur_b_achat = utilisateur_b_achat;
-    }
-    @ManyToMany(mappedBy="bonAchats")
-    private List<Produit> produits;
-
-    public BonAchat() {
+    public void setUtilisateurBonAchat(Utilisateur utilisateurBonAchat) {
+        this.utilisateurBonAchat = utilisateurBonAchat;
     }
 
-    public BonAchat(Long id_bon_achat, Float montant_bon_achat, Date date_bon_achat, String statue_bon_achat) {
-        this.id_bon_achat = id_bon_achat;
-        this.montant_bon_achat = montant_bon_achat;
-        this.date_bon_achat = date_bon_achat;
-        this.statue_bon_achat = statue_bon_achat;
+    public List<Produit> getProduitsBonAchats() {
+        return produitsBonAchats;
     }
 
-    public BonAchat(Float montant_bon_achat, Date date_bon_achat, String statue_bon_achat) {
-        this.montant_bon_achat = montant_bon_achat;
-        this.date_bon_achat = date_bon_achat;
-        this.statue_bon_achat = statue_bon_achat;
-    }
-
-    public Long getId_bon_achat() {
-        return id_bon_achat;
-    }
-
-    public void setId_bon_achat(Long id_bon_achat) {
-        this.id_bon_achat = id_bon_achat;
-    }
-
-    public Float getMontant_bon_achat() {
-        return montant_bon_achat;
-    }
-
-    public void setMontant_bon_achat(Float montant_bon_achat) {
-        this.montant_bon_achat = montant_bon_achat;
-    }
-
-    public Date getDate_bon_achat() {
-        return date_bon_achat;
-    }
-
-    public void setDate_bon_achat(Date date_bon_achat) {
-        this.date_bon_achat = date_bon_achat;
-    }
-
-    public String getStatue_bon_achat() {
-        return statue_bon_achat;
-    }
-
-    public void setStatue_bon_achat(String statue_bon_achat) {
-        this.statue_bon_achat = statue_bon_achat;
-    }
-
-    public List<Produit> getProduits() {
-        return produits;
-    }
-
-    public void setProduits(List<Produit> produits) {
-        this.produits = produits;
+    public void setProduitsBonAchats(List<Produit> produitsBonAchats) {
+        this.produitsBonAchats = produitsBonAchats;
     }
 
     @Override
     public String toString() {
         return "BonAchat{" +
-                "id_bon_achat=" + id_bon_achat +
-                ", montant_bon_achat=" + montant_bon_achat +
-                ", date_bon_achat=" + date_bon_achat +
-                ", statue_bon_achat='" + statue_bon_achat + '\'' +
+                "idBonAchat=" + idBonAchat +
+                ", montantBonAchat=" + montantBonAchat +
+                ", dateBonAchat=" + dateBonAchat +
+                ", statueBonAchat='" + statueBonAchat + '\'' +
+                ", fournisseur=" + fournisseur +
+                ", utilisateurBonAchat=" + utilisateurBonAchat +
+                ", produitsBonAchats=" + produitsBonAchats +
                 '}';
     }
 }
+
+
+
+
+

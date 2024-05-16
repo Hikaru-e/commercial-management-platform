@@ -2,6 +2,7 @@
 package com.platform.gestioncommerciale.controller;
 
 import com.platform.gestioncommerciale.model.Client;
+import com.platform.gestioncommerciale.model.Facture;
 import com.platform.gestioncommerciale.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,11 @@ public class ClientController {
         return clientService.getClientById(id);
     }
 
+    @GetMapping("/search_name/{nomClient}")
+    public  List<Client> findClientByNom(@PathVariable String nomClient) {
+        return clientService.findByNomClient(nomClient);
+    }
+
     @PostMapping("/add")
     public Client addClient(@RequestBody Client client) {
         return clientService.addOrUpdateClient(client);
@@ -33,7 +39,7 @@ public class ClientController {
 
     @PutMapping("/modify/{id}")
     public Client updateClient(@PathVariable Long id,@RequestBody Client client) {
-        client.setId_client(id);
+        client.setIdClient(id);
         return clientService.addOrUpdateClient(client);
     }
 
@@ -42,10 +48,10 @@ public class ClientController {
         clientService.deleteClient(id);
     }
 
-
-    @GetMapping("/search_name/{nomClient}")
-    public  List<Client> findClientByNom(@PathVariable String nomClient) {
-        return clientService.findByNomClient(nomClient);
+    @GetMapping("/historique_facture/{id}")
+    public List<Facture> getFacturesByClientId(@PathVariable Long id) {
+        return clientService.getFacturesByClientId(id);
     }
+
 
 }

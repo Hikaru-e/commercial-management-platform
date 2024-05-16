@@ -20,6 +20,10 @@ public class BonAchatService {
     public Optional<BonAchat> getBonAchatById(Long id) {
         return bonAchatRepo.findById(id);
     }
+
+    public List<BonAchat> getBonAchatsByFournisseur(Long fournisseurId) {
+        return bonAchatRepo.findByFournisseur_IdFourn(fournisseurId);
+    }
     public BonAchat addOrUpdateBonAchat(BonAchat bonAchat) {
         return bonAchatRepo.save((bonAchat));
     }
@@ -27,5 +31,4 @@ public class BonAchatService {
     public void deleteBonAchat(Long id) {
         bonAchatRepo.deleteById(id);
     }
-
 }

@@ -26,6 +26,7 @@ public class FactureController {
     public List<Facture> getAllFactures() {
         return factureService.getAllFactures();
     }
+
     @PostMapping("/add")
     public Facture ajouterModifierFacture( Facture facture) {
 
@@ -34,7 +35,7 @@ public class FactureController {
 
     @PutMapping("/modify/{id}")
     public Facture updateClient(@PathVariable Long id ,@RequestBody Facture facture) {
-        facture.setId_facture(id);
+        facture.setIdFacture(id);
         return factureService.addOrUpdateFacture(facture);
     }
     @DeleteMapping("/delete/{id}")
@@ -42,7 +43,7 @@ public class FactureController {
         factureService.deleteFacture(id);
     }
 
-    /* @GetMapping("/rechercher/{nomClient}")
+/*    @GetMapping("/rechercher/{nomClient}")
     public List<Facture> rechercherFacturesParNomClient(@PathVariable String nomClient) {
         List<Client> clients = clientService.findByNomClient(nomClient);
         if(!clients.isEmpty() && clients.get(0) != null) {
@@ -52,13 +53,10 @@ public class FactureController {
         }
     }*/
 
-
     @GetMapping("/rechercher/{nomClient}")
-    public List<Facture> rechercherFacturesParIdClient(@PathVariable String nomClient) {
+    public List<Facture> rechercherFacturesParNomClient(@PathVariable String nomClient) {
         return factureService.findFacturesByClientNom(nomClient);
     }
-
-
 
     @GetMapping("/show_info_facture/{id}")
     public Optional<Facture> obtenirFactureParId(@PathVariable Long id) {

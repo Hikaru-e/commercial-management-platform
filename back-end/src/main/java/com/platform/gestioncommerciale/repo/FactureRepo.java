@@ -9,6 +9,4 @@ public interface FactureRepo extends JpaRepository<Facture,Long> {
 
     List<Facture>  findByClient_NomClient(String nomClient);
 
-
-
 }

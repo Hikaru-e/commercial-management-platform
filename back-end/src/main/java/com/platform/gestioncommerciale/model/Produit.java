@@ -9,67 +9,70 @@ import java.util.List;
 public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_pdt;
+    private Long idPdt;
     @Column
-    private String categorie_pdt;
+    private String categoriePdt;
     @Column
-    private Float prix_pdt;
+    private Float prixPdt;
     @Column
-    private Integer nv_stock_pdt;
+    private Integer nvStockPdt;
 
-    @ManyToMany(mappedBy="produits")
+    @ManyToMany(mappedBy="produitsFactures")
     private List<Facture> factures;
 
-    @ManyToMany
-    @JoinTable(name="Facture_BonAchat")
+    @ManyToMany(mappedBy = "produitsBonAchats")
     private List<BonAchat> bonAchats;
 
     public Produit() {
     }
 
-    public Produit(Long id_pdt, String categorie_pdt, Float prix_pdt, Integer nv_stock_pdt) {
-        this.id_pdt = id_pdt;
-        this.categorie_pdt = categorie_pdt;
-        this.prix_pdt = prix_pdt;
-        this.nv_stock_pdt = nv_stock_pdt;
+    public Produit(String categoriePdt, Float prixPdt, Integer nvStockPdt, List<Facture> factures, List<BonAchat> bonAchats) {
+        this.categoriePdt = categoriePdt;
+        this.prixPdt = prixPdt;
+        this.nvStockPdt = nvStockPdt;
+        this.factures = factures;
+        this.bonAchats = bonAchats;
     }
 
-    public Produit(String categorie_pdt, Float prix_pdt, Integer nv_stock_pdt) {
-        this.categorie_pdt = categorie_pdt;
-        this.prix_pdt = prix_pdt;
-        this.nv_stock_pdt = nv_stock_pdt;
+    public Produit(Long idPdt, String categoriePdt, Float prixPdt, Integer nvStockPdt, List<Facture> factures, List<BonAchat> bonAchats) {
+        this.idPdt = idPdt;
+        this.categoriePdt = categoriePdt;
+        this.prixPdt = prixPdt;
+        this.nvStockPdt = nvStockPdt;
+        this.factures = factures;
+        this.bonAchats = bonAchats;
     }
 
-    public Long getId_pdt() {
-        return id_pdt;
+    public Long getIdPdt() {
+        return idPdt;
     }
 
-    public void setId_pdt(Long id_pdt) {
-        this.id_pdt = id_pdt;
+    public void setIdPdt(Long idPdt) {
+        this.idPdt = idPdt;
     }
 
-    public String getCategorie_pdt() {
-        return categorie_pdt;
+    public String getCategoriePdt() {
+        return categoriePdt;
     }
 
-    public void setCategorie_pdt(String categorie_pdt) {
-        this.categorie_pdt = categorie_pdt;
+    public void setCategoriePdt(String categoriePdt) {
+        this.categoriePdt = categoriePdt;
     }
 
-    public Float getPrix_pdt() {
-        return prix_pdt;
+    public Float getPrixPdt() {
+        return prixPdt;
     }
 
-    public void setPrix_pdt(Float prix_pdt) {
-        this.prix_pdt = prix_pdt;
+    public void setPrixPdt(Float prixPdt) {
+        this.prixPdt = prixPdt;
     }
 
-    public Integer getNv_stock_pdt() {
-        return nv_stock_pdt;
+    public Integer getNvStockPdt() {
+        return nvStockPdt;
     }
 
-    public void setNv_stock_pdt(Integer nv_stock_pdt) {
-        this.nv_stock_pdt = nv_stock_pdt;
+    public void setNvStockPdt(Integer nvStockPdt) {
+        this.nvStockPdt = nvStockPdt;
     }
 
     public List<Facture> getFactures() {
@@ -91,10 +94,12 @@ public class Produit {
     @Override
     public String toString() {
         return "Produit{" +
-                "id_pdt=" + id_pdt +
-                ", categorie_pdt='" + categorie_pdt + '\'' +
-                ", prix_pdt=" + prix_pdt +
-                ", nv_stock_pdt=" + nv_stock_pdt +
+                "idPdt=" + idPdt +
+                ", categoriePdt='" + categoriePdt + '\'' +
+                ", prixPdt=" + prixPdt +
+                ", nvStockPdt=" + nvStockPdt +
+                ", factures=" + factures +
+                ", bonAchats=" + bonAchats +
                 '}';
     }
 }
