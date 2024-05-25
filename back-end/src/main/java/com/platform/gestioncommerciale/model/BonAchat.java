@@ -23,20 +23,20 @@ public class BonAchat {
 
     @ManyToOne
     @JoinColumn(name = "idFourn")
-    @JsonBackReference("fournisseur-bonAchats")
+    @JsonBackReference(value = "fournisseur-bonAchat")
     // @JsonBackReference breaks the circular reference by not serializing the back reference
     private Fournisseur fournisseur;
 
     @ManyToOne
     @JoinColumn(name = "idUser")
-    @JsonBackReference("utilisateur-bonAchats")
+    @JsonBackReference(value = "utilisateur-bonAchat")
     private Utilisateur utilisateurBonAchat;
 
     @ManyToMany
     @JoinTable(name="bonachat_produit",
             joinColumns = @JoinColumn(name="idBonAchat"),
             inverseJoinColumns = @JoinColumn(name="idPdt"))
-    @JsonManagedReference("bonAchat-produits")
+    @JsonManagedReference(value = "bonAchat-produits")
     private List<Produit> produitsBonAchats;
 
     public BonAchat() {

@@ -26,7 +26,7 @@ public class Fournisseur {
 
 
     @OneToMany(mappedBy = "fournisseur")
-    @JsonManagedReference("fournisseur-bonAchats")
+    @JsonManagedReference(value = "fournisseur-bonAchat")
     private List<BonAchat> bonAchats;
 
     public Fournisseur() {

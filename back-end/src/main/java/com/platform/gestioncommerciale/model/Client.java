@@ -32,7 +32,7 @@ public class Client implements Serializable {
     private String emailClient;
 
     @OneToMany(mappedBy="client")
-    @JsonManagedReference("client-factures")
+    @JsonManagedReference(value = "client-factures")
     private List<Facture> factures;
     public Client() {
     }

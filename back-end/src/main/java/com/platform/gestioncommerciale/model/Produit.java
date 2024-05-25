@@ -19,11 +19,11 @@ public class Produit {
     private Integer nvStockPdt;
 
     @ManyToMany(mappedBy="produitsFactures")
-    @JsonBackReference("produit-facture")
+    @JsonBackReference(value = "facture-produits")
     private List<Facture> factures;
 
     @ManyToMany(mappedBy = "produitsBonAchats")
-    @JsonBackReference("bonAchat-produits")
+    @JsonBackReference(value = "bonAchat-produits")
     private List<BonAchat> bonAchats;
 
     public Produit() {

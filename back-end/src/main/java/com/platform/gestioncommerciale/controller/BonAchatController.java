@@ -33,7 +33,7 @@ public class BonAchatController {
 
 
 
-    @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public BonAchat addBonAchat(@RequestBody BonAchat bonAchat){
         return bonAchatService.addOrUpdateBonAchat(bonAchat);
     }

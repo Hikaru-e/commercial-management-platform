@@ -25,18 +25,18 @@ public class Facture {
 
     @ManyToOne
     @JoinColumn(name = "idUser")
-    @JsonBackReference("utilisateur-factures")
+    @JsonBackReference(value = "utilisateur-factures")
     private Utilisateur utilisateurFacture;
     @ManyToOne
     @JoinColumn(name="idClient")
-    @JsonBackReference("client-factures")
+    @JsonBackReference(value = "client-factures")
     private Client client;
 
     @ManyToMany
     @JoinTable(name="facture_produit",
         joinColumns = @JoinColumn(name="idFacture"),
         inverseJoinColumns = @JoinColumn(name="idPdt"))
-    @JsonManagedReference("produit-facture")
+    @JsonManagedReference(value = "facture-produits")
     private List<Produit> produitsFactures;
 
     public Facture() {

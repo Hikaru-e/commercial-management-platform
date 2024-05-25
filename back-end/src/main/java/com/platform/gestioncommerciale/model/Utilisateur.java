@@ -25,11 +25,11 @@ public class Utilisateur {
     private String roleUser;
 
     @OneToMany(mappedBy = "utilisateurBonAchat")
-    @JsonManagedReference("utilisateur-bonAchats")
+    @JsonManagedReference(value = "utilisateur-bonAchat")
     private List<BonAchat> bonAchats;
 
     @OneToMany(mappedBy = "utilisateurFacture")
-    @JsonManagedReference("utilisateur-factures")
+    @JsonManagedReference(value = "utilisateur-factures")
     private List<Facture> factures;
 
     public Utilisateur() {
