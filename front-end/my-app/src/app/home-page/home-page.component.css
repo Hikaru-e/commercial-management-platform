@@ -1,0 +1,17 @@
+.container {
+    width: 75%;
+    margin: 0 auto;
+    display: flex; /* Utilisation de flexbox */
+    flex-wrap: wrap; /* Permet le passage à la ligne des éléments */
+    justify-content: space-between; /* Espace égal entre les éléments */
+  }
+  
+  .canvas-container {
+    width: calc(50% - 10px); /* Largeur de 50% moins l'espace entre les éléments */
+    margin-bottom: 20px;
+  }
+  
+  .line-chart-container {
+    width: 100%; /* Largeur de 100% pour le graphique en bas */
+  }
+  
