@@ -36,10 +36,13 @@ export class ClientComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      if (result) {
+        this.getClients(); // Recharger les clients après la fermeture du dialogue
+      }
       this.editingClientId = null;
     });
   }
+  
 
   
   cancelEditing() {

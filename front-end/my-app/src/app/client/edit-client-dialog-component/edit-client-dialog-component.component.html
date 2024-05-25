@@ -1,9 +1,39 @@
 <h2 mat-dialog-title>Edit Client</h2>
 <div mat-dialog-content>
-  <!-- Votre formulaire d'édition -->
-  <div>testing formulaire</div>
-</div>
-<div mat-dialog-actions>
+  <form [formGroup]="editClientForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>CNE Client</mat-label>
+      <input matInput formControlName="cneClient">
+    </mat-form-field>
 
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Save</button>
+    <mat-form-field>
+      <mat-label>Nom Client</mat-label>
+      <input matInput formControlName="nomClient">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Prénom Client</mat-label>
+      <input matInput formControlName="prenomClient">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Adresse Client</mat-label>
+      <input matInput formControlName="adresseClient">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Téléphone Client</mat-label>
+      <input matInput formControlName="telClient" type="number">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email Client</mat-label>
+      <input matInput formControlName="emailClient" type="email">
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Cancel</button>
+      <button mat-button type="submit" [disabled]="editClientForm.invalid">Save</button>
+    </div>
+  </form>
 </div>

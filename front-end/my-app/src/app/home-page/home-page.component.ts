@@ -47,7 +47,7 @@ export class HomePageComponent implements AfterViewInit {
         datasets: [{
           label: 'Stats',
           data: [this.stats.sales, this.stats.views],
-          backgroundColor: ['#dddddd', '#000000'] // Light grey and black
+          backgroundColor: ['#b6ae3f', '#000000'] // Light grey and black
         }]
       }
     });
@@ -63,7 +63,7 @@ export class HomePageComponent implements AfterViewInit {
           labels: ['Fournisseurs etrangers', 'marocains', 'Dans les Alentours'],
           datasets: [{
             data: [totalSales.direct || 0, totalSales.channels || 0, totalSales.other || 0],
-            backgroundColor: ['#dddddd', '#888888', '#000000']
+            backgroundColor: ['#b6ae3f', '#888888', '#000000']
           }]
         }
       });
@@ -81,7 +81,7 @@ export class HomePageComponent implements AfterViewInit {
           datasets: [{
             label: 'Active Users',
             data: this.stats.activeUsers.map((user: { users: any; }) => user.users),
-            borderColor: '#000000',
+            borderColor: '#b6ae3f',
             fill: false
           }]
         }

@@ -1,7 +1,4 @@
-.client-item {
-  display: flex;
-  justify-content: space-between;
-}
+
 
 mat-card {
   max-width: 400px;
@@ -19,4 +16,35 @@ mat-card.ng-animating {
 .edit-form {
   background-color: rgba(255, 255, 255, 0.8); /* Couleur de fond semi-transparente */
   backdrop-filter: blur(5px); /* Appliquer un flou à l'arrière-plan */
+}
+
+.client-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+
+}
+
+.client-item.header {
+  font-weight: bold;
+  background-color: #b6ae3f; /* Nouvelle couleur de fond */
+}
+
+.client-item .mat-line {
+  flex: 1;
+  padding: 4px;
+}
+
+.client-item .mat-line:nth-child(odd) {
+  background-color: #b6ae3f;
+}
+
+.client-item .mat-line:nth-child(even) {
+  background-color: #b6ae3f;
+}
+
+.client-item .mat-line:last-child {
+  text-align: center;
 }

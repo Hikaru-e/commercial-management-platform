@@ -1,23 +1,36 @@
 <app-header></app-header>
 
 <mat-list>
+  <mat-list-item>
+    <div class="client-item header">
+      <div mat-line>ID Client</div>
+      <div mat-line>CNE Client</div>
+      <div mat-line>Prénom Client</div>
+      <div mat-line>Adresse Client</div>
+      <div mat-line>Tel Client</div>
+      <div mat-line>Email Client</div>
+      <div mat-line>Actions</div>
+    </div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
   <mat-list-item *ngFor="let client of clients">
     <div class="client-item">
-      <div mat-line>{{ client.id_client }}</div>
+      <div mat-line>{{ client.idClient }}</div>
+      <div mat-line>{{ client.cneClient }}</div>
+      <div mat-line>{{ client.prenomClient }}</div>
+      <div mat-line>{{ client.adresseClient }}</div>
+      <div mat-line>{{ client.telClient }}</div>
+      <div mat-line>{{ client.emailClient }}</div>
       <div>
-        <button mat-icon-button color="primary" (click)="startEditingClient(client.id_client)">
+        <button mat-icon-button color="primary" (click)="startEditingClient(client.idClient)">
           <mat-icon>edit</mat-icon>
         </button>        
-        <button mat-icon-button color="warn" (click)="deleteClient(client.id_client)">
+        <button mat-icon-button color="warn" (click)="deleteClient(client.idClient)">
           <mat-icon>delete</mat-icon>
         </button>
       </div>
     </div>
   </mat-list-item>
 </mat-list>
-
-
-
-
 
 <button mat-raised-button color="primary" (click)="addClient()">Add Client</button>

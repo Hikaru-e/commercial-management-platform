@@ -19,7 +19,7 @@
 .statistics-bar {
   display: flex;
   justify-content: space-between;
-  background-color: #f8f8f8;
+  background-color: #b6ae3f;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -39,5 +39,5 @@
 .stat p {
   margin: 5px 0 0;
   font-size: 1.4em;
-  color: #000;
+  color: #000000;
 }

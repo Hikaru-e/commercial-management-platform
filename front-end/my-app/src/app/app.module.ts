@@ -33,6 +33,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { FournisseurComponent } from './fournisseur/fournisseur.component';
 import { BondachatComponent } from './bondachat/bondachat.component';
 import { FactureComponent } from './facture/facture.component';
+import { MatTableModule } from '@angular/material/table';
+import { HistoriqueAchatsDialogComponent } from './fournisseur/historique-achats-dialog/historique-achats-dialog.component';
 
 
 @NgModule({
@@ -48,11 +50,14 @@ import { FactureComponent } from './facture/facture.component';
     FournisseurComponent,
     EditClientDialogComponentComponent,
     BondachatComponent,
-    FactureComponent
+    FournisseurComponent,
+    FactureComponent,
+    HistoriqueAchatsDialogComponent
    
   ],
   imports: [
     BrowserModule,
+    MatTableModule,
     AppRoutingModule,
     ReactiveFormsModule,
     MatDialogModule,
