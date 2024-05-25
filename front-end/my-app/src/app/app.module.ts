@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { MatCardModule } from '@angular/material/card'; // Importez MatCardModule
 import { MatFormFieldModule } from '@angular/material/form-field';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -64,6 +64,7 @@ import { FactureComponent } from './facture/facture.component';
      MatListModule ,
      BaseChartDirective,
      CommonModule,
+     HttpClientModule,
      BrowserAnimationsModule
    
   ],

@@ -1,12 +1,36 @@
+<div>
 <div class="container">
-    <div class="canvas-container">
-      <canvas #barChart></canvas>
-    </div>
-    <div class="canvas-container">
-      <canvas #pieChart></canvas>
-    </div>
-    <div class="canvas-container">
-      <canvas #lineChart></canvas>
+  <div class="canvas-container">
+    <canvas #barChart></canvas>
+  </div>
+  <div class="canvas-container">
+    <canvas #pieChart></canvas>
+  </div>
+  <div class="canvas-container">
+    <canvas #lineChart></canvas>
+  </div>
+</div>
+
+
+  <!-- Vérifier si 'stats' est défini avant d'afficher les statistiques -->
+  <div *ngIf="stats">
+    <div class="statistics-bar">
+      <div class="stat">
+        <h3>Total Amount</h3>
+        <p>{{ stats.totalAmount | number }}</p>
+      </div>
+      <div class="stat">
+        <h3>Quantity</h3>
+        <p>{{ stats.quantity | number }}</p>
+      </div>
+      <div class="stat">
+        <h3>Grow</h3>
+        <p>{{ stats.grow }}%</p>
+      </div>
+      <div class="stat">
+        <h3>Downloads</h3>
+        <p>{{ stats.downloads | number }}</p>
+      </div>
     </div>
   </div>
-  
+</div>

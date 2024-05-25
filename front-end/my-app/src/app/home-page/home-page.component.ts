@@ -14,6 +14,15 @@ export class HomePageComponent implements AfterViewInit {
   @ViewChild('pieChart') pieChart!: ElementRef;
   @ViewChild('lineChart') lineChart!: ElementRef;
 
+
+  ngOnInit(): void {
+    this.statsService.getStats().then(stats => {
+      this.stats = stats;
+    }).catch(error => {
+      console.error('Error fetching stats:', error);
+    });
+  }
+
   constructor(private statsService: StatsService) { }
 
   ngAfterViewInit(): void {
@@ -21,11 +30,13 @@ export class HomePageComponent implements AfterViewInit {
     this.setupCharts();
   }
 
-  private setupCharts(): void {
+  private async setupCharts(): Promise<void> {
+    this.stats = await this.statsService.getStats();
     this.setupBarChart();
     this.setupPieChart();
     this.setupLineChart();
   }
+
 
   private setupBarChart(): void {
     const ctx = this.barChart.nativeElement.getContext('2d');
@@ -43,32 +54,39 @@ export class HomePageComponent implements AfterViewInit {
   }
 
   private setupPieChart(): void {
-    const ctx = this.pieChart.nativeElement.getContext('2d');
-    new Chart(ctx, {
-      type: 'pie',
-      data: {
-        labels: ['Direct', 'Channel', 'Other'],
-        datasets: [{
-          data: [this.stats.totalSales.direct, this.stats.totalSales.channels, this.stats.totalSales.other],
-          backgroundColor: ['#dddddd', '#888888', '#000000'] // Light grey, dark grey and black
-        }]
-      }
-    });
+    if (this.stats && this.stats.totalSales) {
+      const totalSales = this.stats.totalSales;
+      const ctx = this.pieChart.nativeElement.getContext('2d');
+      new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ['Fournisseurs etrangers', 'marocains', 'Dans les Alentours'],
+          datasets: [{
+            data: [totalSales.direct || 0, totalSales.channels || 0, totalSales.other || 0],
+            backgroundColor: ['#dddddd', '#888888', '#000000']
+          }]
+        }
+      });
+    }
   }
+  
 
   private setupLineChart(): void {
-    const ctx = this.lineChart.nativeElement.getContext('2d');
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: this.stats.activeUsers.map((user: { month: string; }) => user.month),
-        datasets: [{
-          label: 'Active Users',
-          data: this.stats.activeUsers.map((user: { users: any; }) => user.users),
-          borderColor: '#000000', // Black
-          fill: false
-        }]
-      }
-    });
+    if (this.stats && this.stats.activeUsers) {
+      const ctx = this.lineChart.nativeElement.getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: this.stats.activeUsers.map((user: { month: string; }) => user.month),
+          datasets: [{
+            label: 'Active Users',
+            data: this.stats.activeUsers.map((user: { users: any; }) => user.users),
+            borderColor: '#000000',
+            fill: false
+          }]
+        }
+      });
+    }
   }
+  
 }
