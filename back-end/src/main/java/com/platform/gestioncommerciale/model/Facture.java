@@ -1,5 +1,7 @@
 package com.platform.gestioncommerciale.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -23,15 +25,18 @@ public class Facture {
 
     @ManyToOne
     @JoinColumn(name = "idUser")
+    @JsonBackReference("utilisateur-factures")
     private Utilisateur utilisateurFacture;
     @ManyToOne
     @JoinColumn(name="idClient")
+    @JsonBackReference("client-factures")
     private Client client;
 
     @ManyToMany
     @JoinTable(name="facture_produit",
         joinColumns = @JoinColumn(name="idFacture"),
         inverseJoinColumns = @JoinColumn(name="idPdt"))
+    @JsonManagedReference("produit-facture")
     private List<Produit> produitsFactures;
 
     public Facture() {

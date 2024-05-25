@@ -1,5 +1,6 @@
 package com.platform.gestioncommerciale.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -31,6 +32,7 @@ public class Client implements Serializable {
     private String emailClient;
 
     @OneToMany(mappedBy="client")
+    @JsonManagedReference("client-factures")
     private List<Facture> factures;
     public Client() {
     }

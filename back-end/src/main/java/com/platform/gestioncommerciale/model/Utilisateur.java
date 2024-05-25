@@ -1,5 +1,6 @@
 package com.platform.gestioncommerciale.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -24,9 +25,11 @@ public class Utilisateur {
     private String roleUser;
 
     @OneToMany(mappedBy = "utilisateurBonAchat")
+    @JsonManagedReference("utilisateur-bonAchats")
     private List<BonAchat> bonAchats;
 
     @OneToMany(mappedBy = "utilisateurFacture")
+    @JsonManagedReference("utilisateur-factures")
     private List<Facture> factures;
 
     public Utilisateur() {

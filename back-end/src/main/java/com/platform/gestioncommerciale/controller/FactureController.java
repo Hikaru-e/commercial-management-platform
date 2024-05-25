@@ -28,7 +28,7 @@ public class FactureController {
     }
 
     @PostMapping("/add")
-    public Facture ajouterModifierFacture( Facture facture) {
+    public Facture ajouterModifierFacture(@RequestBody Facture facture) {
 
         return factureService.addOrUpdateFacture(facture);
     }

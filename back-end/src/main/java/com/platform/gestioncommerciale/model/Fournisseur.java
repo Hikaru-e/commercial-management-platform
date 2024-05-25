@@ -1,5 +1,6 @@
 package com.platform.gestioncommerciale.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class Fournisseur {
 
 
     @OneToMany(mappedBy = "fournisseur")
+    @JsonManagedReference("fournisseur-bonAchats")
     private List<BonAchat> bonAchats;
 
     public Fournisseur() {

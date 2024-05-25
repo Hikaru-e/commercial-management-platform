@@ -3,6 +3,7 @@ package com.platform.gestioncommerciale.controller;
 import com.platform.gestioncommerciale.model.BonAchat;
 import com.platform.gestioncommerciale.service.BonAchatService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,19 +21,19 @@ public class BonAchatController {
     }
 
     @GetMapping("/search_by_id/{id}")
-    public Optional<BonAchat> getBonAchatById(@PathVariable  Long id){
+    public Optional<BonAchat> getBonAchatById(@PathVariable Long id){
         return bonAchatService.getBonAchatById(id);
     }
 
 
-    @GetMapping("/search_by_fournisseaur/{id_fourn}")
-    public List<BonAchat> getBonAchatsByFournisseur(@PathVariable Long fournisseurId) {
-        return bonAchatService.getBonAchatsByFournisseur(fournisseurId);
+    @GetMapping("/search_by_fournisseur/{id_fourn}")
+    public List<BonAchat> getBonAchatsByFournisseur(@PathVariable Long id_fourn) {
+        return bonAchatService.getBonAchatsByFournisseur(id_fourn);
     }
 
 
 
-    @PostMapping("/add")
+    @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
     public BonAchat addBonAchat(@RequestBody BonAchat bonAchat){
         return bonAchatService.addOrUpdateBonAchat(bonAchat);
     }
