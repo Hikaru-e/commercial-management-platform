@@ -122,4 +122,9 @@ public class Utilisateur {
                 ", factures=" + factures +
                 '}';
     }
+<<<<<<< Updated upstream
 }
+=======
+
+}
+>>>>>>> Stashed changes

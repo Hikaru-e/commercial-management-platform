@@ -13,10 +13,24 @@ public class Produit {
     private Long idPdt;
     @Column
     private String categoriePdt;
+
+    @Column
+    private String namePdt;
+
+    @Column
+    private String description;
+
     @Column
     private Float prixPdt;
+
     @Column
     private Integer nvStockPdt;
+
+    @Column
+    private String imagePath;
+
+    @Column
+    private Long bareCode;
 
     @ManyToMany(mappedBy="produitsFactures")
     @JsonBackReference("produit-facture")
@@ -29,19 +43,30 @@ public class Produit {
     public Produit() {
     }
 
-    public Produit(String categoriePdt, Float prixPdt, Integer nvStockPdt, List<Facture> factures, List<BonAchat> bonAchats) {
+    public Produit(Long idPdt, String categoriePdt, String namePdt, String description, Float prixPdt, Integer nvStockPdt,
+                   String imagePath, Long bareCode,
+                   List<Facture> factures, List<BonAchat> bonAchats) {
+        this.idPdt = idPdt;
         this.categoriePdt = categoriePdt;
+        this.namePdt = namePdt;
+        this.description = description;
         this.prixPdt = prixPdt;
         this.nvStockPdt = nvStockPdt;
+        this.imagePath = imagePath;
+        this.bareCode = bareCode;
         this.factures = factures;
         this.bonAchats = bonAchats;
     }
-
-    public Produit(Long idPdt, String categoriePdt, Float prixPdt, Integer nvStockPdt, List<Facture> factures, List<BonAchat> bonAchats) {
-        this.idPdt = idPdt;
+    public Produit(String categoriePdt, String namePdt, String description, Float prixPdt, Integer nvStockPdt,
+                   String imagePath, Long bareCode,
+                   List<Facture> factures, List<BonAchat> bonAchats) {
         this.categoriePdt = categoriePdt;
+        this.namePdt = namePdt;
+        this.description = description;
         this.prixPdt = prixPdt;
         this.nvStockPdt = nvStockPdt;
+        this.imagePath = imagePath;
+        this.bareCode = bareCode;
         this.factures = factures;
         this.bonAchats = bonAchats;
     }
@@ -94,13 +119,49 @@ public class Produit {
         this.bonAchats = bonAchats;
     }
 
+    public String getNamePdt() {
+        return namePdt;
+    }
+
+    public void setNamePdt(String namePdt) {
+        this.namePdt = namePdt;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public Long getBareCode() {
+        return bareCode;
+    }
+
+    public void setBareCode(Long bareCode) {
+        this.bareCode = bareCode;
+    }
+
     @Override
     public String toString() {
         return "Produit{" +
                 "idPdt=" + idPdt +
                 ", categoriePdt='" + categoriePdt + '\'' +
+                ", namePdt='" + namePdt + '\'' +
+                ", description='" + description + '\'' +
                 ", prixPdt=" + prixPdt +
                 ", nvStockPdt=" + nvStockPdt +
+                ", imagePath='" + imagePath + '\'' +
+                ", bareCode=" + bareCode +
                 ", factures=" + factures +
                 ", bonAchats=" + bonAchats +
                 '}';

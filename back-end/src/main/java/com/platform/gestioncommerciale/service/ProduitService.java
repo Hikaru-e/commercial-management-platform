@@ -27,6 +27,10 @@ public class ProduitService {
 
     public Produit addOrUpdateProduit(Produit produit) { return  produitRepo.save(produit);}
 
+    public Optional<Produit> findProduitByName (String namePdt) {
+        return produitRepo.findProduitByName(namePdt);
+    }
+
     public void deleteProduit(Long id) {
         produitRepo.deleteById(id);
     }

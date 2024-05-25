@@ -1,5 +1,6 @@
 package com.platform.gestioncommerciale.controller;
 
+import com.platform.gestioncommerciale.model.Produit;
 import com.platform.gestioncommerciale.model.Utilisateur;
 import com.platform.gestioncommerciale.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,34 @@ public class UtilisateurController {
     public void deleteUtilisateur(@PathVariable Long id) {
         utilisateurService.deleteUtilisateur(id);
     }
+
+    @GetMapping("/search_name/{nameUser}")
+    public Optional<Utilisateur> findUserByName(@PathVariable String nameUser) {
+        return utilisateurService.findUserByName(nameUser);
+    }
+    @PostMapping("/login/{email}")
+    public Utilisateur login(@PathVariable String email, @RequestBody String password) {
+        try {
+            // Find the user by email
+            Optional<Utilisateur> utilisateurOpt = utilisateurService.findByEmailUser(email);
+
+            // Check if the user exists
+            if (utilisateurOpt.isPresent()) {
+                // Get the user from Optional
+                Utilisateur utilisateur = utilisateurOpt.get();
+                System.out.println(utilisateur.getEmailUser());
+                System.out.println(utilisateur.getPasswordUser());
+
+                // Authenticate the user using the provided password
+                return utilisateurService.login(Optional.of(utilisateur), password);
+            } else {
+                throw new Exception("User not found");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+
 
 }
