@@ -15,7 +15,9 @@ services:
   backend:
     depends_on:
       - mysqldb
-    build: ./back-end
+    build:
+      context: ./back-end
+      dockerfile: Dockerfile
     restart: on-failure
     env_file: ./.env
     ports:
@@ -35,7 +37,9 @@ services:
 
   frontend: 
     container_name: frontend
-    build: ./front-end/my-app
+    build:
+      context: ./front-end/my-app
+      dockerfile: Dockerfile
     volumes:
       - './:/usr/src/app'
     ports:
