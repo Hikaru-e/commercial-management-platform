@@ -46,3 +46,8 @@
   .mat-list {
     background-color: transparent; /* Assurez-vous que la liste soit transparent pour voir la vidéo en arrière-plan */
   }
+
+  .client-item.header {
+    font-weight: bold;
+    background-color: #b6ae3f; /* Nouvelle couleur de fond */
+  }

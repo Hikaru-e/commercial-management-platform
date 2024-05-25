@@ -1,28 +1,36 @@
-<app-header></app-header>
 
-<div class="video-container">
-  <video autoplay muted loop id="video-background">
-    <source src="assets/videos/fournisseurs.mp4" type="video/mp4">
-    <!-- Ajoutez d'autres sources vidéo si nécessaire -->
-  </video>
-  <mat-list>
-    <mat-list-item *ngFor="let client of clients">
-      <div class="client-item">
-        <div mat-line>{{ client.id_fourn }}</div>
-        <div>
-          <button mat-icon-button color="primary" (click)="startEditingClient(client.id_client)">
-            <mat-icon>edit</mat-icon>
-          </button>        
-          <button mat-icon-button color="warn" (click)="deleteClient(client.id_client)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </div>
+<mat-list>
+  <mat-list-item>
+    <div class="client-item header">
+      <div mat-line>Nom Société</div>
+      <div mat-line>Adresse Société</div>
+      <div mat-line>Mobilite</div>
+      <div mat-line>Téléphone Société</div>
+      <div mat-line>Email Société</div>
+      <div mat-line>Actions</div>
+    </div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item *ngFor="let fournisseur of fournisseurs">
+    <div class="client-item">
+      <div mat-line>{{ fournisseur.nomSociete }}</div>
+      <div mat-line>{{ fournisseur.adressFourn }}</div>
+      <div mat-line>{{ fournisseur.mobilite }}</div>
+      <div mat-line>{{ fournisseur.telFourn }}</div>
+      <div mat-line>{{ fournisseur.emailFourn }}</div>
+      <div>
+        <button mat-icon-button color="primary" (click)="startEditingFournisseur(fournisseur.idFourn)">
+          <mat-icon>edit</mat-icon>
+        </button>        
+        <button mat-icon-button color="warn" (click)="deleteFournisseur(fournisseur.idFourn)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="showHistoriqueAchats(fournisseur.idFourn)">
+          <mat-icon>history</mat-icon>
+        </button>
       </div>
-    </mat-list-item>
-  </mat-list>
-</div>
+    </div>
+  </mat-list-item>
+</mat-list>
 
-
-
-
-<button mat-raised-button color="primary" (click)="addClient()">Add Client</button>
+<button mat-raised-button color="primary" (click)="addFournisseur()">Add Fournisseur</button>

@@ -1,85 +1,81 @@
 import { Component, OnInit } from '@angular/core';
-import { fournisseurService } from './fournisseur.service';
+import { FournisseurService } from './fournisseur.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditFournisseurDialogComponentComponent } from './edit-fournisseur-dialog-component/edit-fournisseur-dialog-component.component';
-
+import { HistoriqueAchatsDialogComponent } from './historique-achats-dialog/historique-achats-dialog.component'; // Assurez-vous d'importer le composant HistoriqueAchatsDialogComponent
 @Component({
   selector: 'app-fournisseur',
   templateUrl: './fournisseur.component.html',
-  styleUrls: ['./fournisseur.component.css'] // 
+  styleUrls: ['./fournisseur.component.css']
 })
-
 export class FournisseurComponent implements OnInit {
-  clients: any[] = []; // Initialiser clients avec une liste vide
-  editMode = false;
-  editingClientId: number | null = null; // Pour stocker l'ID du client en cours d'édition
+  fournisseurs: any[] = [];
+  editingFournisseurId: number | null = null;
 
-
-  constructor(private fournisseurService: fournisseurService,
+  constructor(
+    private fournisseurService: FournisseurService,
     private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    this.getClients();
+    this.getFournisseurs();
   }
 
-
-  startEditingClient(clientId: number) {
-    console.log('startEditingClient called with client ID:', clientId);
-    this.editingClientId = clientId;
-    this.openEditClientDialog();
+  startEditingFournisseur(fournisseurId: number) {
+    this.editingFournisseurId = fournisseurId;
+    this.openEditFournisseurDialog();
   }
 
-  openEditClientDialog(): void {
+  openEditFournisseurDialog(): void {
     const dialogRef = this.dialog.open(EditFournisseurDialogComponentComponent, {
       width: '400px',
-      data: { editingClientId: this.editingClientId }
+      data: { editingFournisseurId: this.editingFournisseurId }
     });
-
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.editingClientId = null;
+      this.editingFournisseurId = null;
+      this.getFournisseurs();
     });
   }
 
-  
-  cancelEditing() {
-    this.editMode = false;
-    this.editingClientId = null;
-  }
-
-
-  getClients() {
-    this.fournisseurService.getClients().then(response => {
-      this.clients = response.data;
+  getFournisseurs() {
+    this.fournisseurService.getFournisseurs().then(response => {
+      this.fournisseurs = response.data;
     }).catch(error => {
-      console.error('Error fetching clients:', error);
+      console.error('Error fetching fournisseurs:', error);
     });
   }
 
-  addClient() {
-    const newClient = { id: 6, name: 'Client 6' };
-    this.fournisseurService.addClient(newClient).then(() => {
-      this.getClients();
+  addFournisseur() {
+    const newFournisseur = { id: 6, nomSociete: 'New Fournisseur' };
+    this.fournisseurService.addFournisseur(newFournisseur).then(() => {
+      this.getFournisseurs();
     }).catch(error => {
-      console.error('Error adding client:', error);
+      console.error('Error adding fournisseur:', error);
     });
   }
 
-  deleteClient(id: number) {
-    this.fournisseurService.deleteClient(id).then(() => {
-      this.getClients();
+  deleteFournisseur(id: number) {
+    this.fournisseurService.deleteFournisseur(id).then(() => {
+      this.getFournisseurs();
     }).catch(error => {
-      console.error('Error deleting client:', error);
+      console.error('Error deleting fournisseur:', error);
     });
   }
 
-  updateClient(id: number, newName: string) {
-    this.fournisseurService.updateClient(id, newName).then(() => {
-      this.getClients();
-    }).catch(error => {
-      console.error('Error updating client:', error);
-    });
+  // Méthode pour afficher le dialogue de l'historique des achats
+  showHistoriqueAchats(idFournisseur: number) {
+    this.fournisseurService.getHistoriqueAchats(idFournisseur)
+      .then((response: any) => {
+        const historiqueAchats = response.data;
+        this.dialog.open(HistoriqueAchatsDialogComponent, {
+          width: '600px',
+          data: { historiqueAchats }
+        });
+      })
+      .catch((error: any) => {
+        console.error('Error fetching historique achats:', error);
+      });
   }
+
 }
