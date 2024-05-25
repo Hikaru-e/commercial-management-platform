@@ -12,10 +12,12 @@ services:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
       - db:/var/lib/mysql
+
   backend:
     depends_on:
       - mysqldb
-    build: ./back-end
+    image: commercialeplatforme/gestion-commercial-backend:latest  # Specify backend image name and tag
+    container_name: gestion-commercial-backend  # Unique container name for backend service
     restart: on-failure
     env_file: ./.env
     ports:
@@ -34,7 +36,8 @@ services:
     tty: true
 
   frontend: 
-    container_name: frontend
+    image: commercialeplatforme/gestion-commercial-frontend:latest  # Specify frontend image name and tag
+    container_name: gestion-commercial-frontend  # Unique container name for frontend service
     build: ./front-end/my-app
     volumes:
       - './:/usr/src/app'
