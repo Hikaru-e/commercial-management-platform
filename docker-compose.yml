@@ -17,7 +17,7 @@ services:
     depends_on:
       - mysqldb
     image: commercialeplatforme/gestion-commercial-backend:latest  # Specify backend image name and tag
-    container_name: gestion-commercial-backend  # Unique container name for backend service
+    container_name: commercialeplatforme/gestion-commercial-backend  # Unique container name for backend service
     restart: on-failure
     env_file: ./.env
     ports:
@@ -37,7 +37,7 @@ services:
 
   frontend: 
     image: commercialeplatforme/gestion-commercial-frontend:latest  # Specify frontend image name and tag
-    container_name: gestion-commercial-frontend  # Unique container name for frontend service
+    container_name: commercialeplatforme/gestion-commercial-frontend  # Unique container name for frontend service
     build: ./front-end/my-app
     volumes:
       - './:/usr/src/app'
