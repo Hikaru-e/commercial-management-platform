@@ -1,5 +1,6 @@
 package com.platform.gestioncommerciale.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -18,9 +19,11 @@ public class Produit {
     private Integer nvStockPdt;
 
     @ManyToMany(mappedBy="produitsFactures")
+    @JsonBackReference("produit-facture")
     private List<Facture> factures;
 
     @ManyToMany(mappedBy = "produitsBonAchats")
+    @JsonBackReference("bonAchat-produits")
     private List<BonAchat> bonAchats;
 
     public Produit() {

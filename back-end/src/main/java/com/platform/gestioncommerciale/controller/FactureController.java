@@ -63,6 +63,9 @@ public class FactureController {
         return factureService.getFactureById(id);
     }
 
-
+    @GetMapping("/sum")
+    public Float getSumOfAllFactures() {
+        return factureService.getSumOfAllFactures();
+    }
 
 }

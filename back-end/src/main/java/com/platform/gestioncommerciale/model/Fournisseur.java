@@ -1,5 +1,6 @@
 package com.platform.gestioncommerciale.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -18,6 +19,10 @@ public class Fournisseur {
     private String adressFourn;
 
     @Column
+    private String mobilite;
+
+
+    @Column
     private Integer telFourn;
 
     @Column
@@ -25,9 +30,20 @@ public class Fournisseur {
 
 
     @OneToMany(mappedBy = "fournisseur")
+    @JsonManagedReference("fournisseur-bonAchat")
     private List<BonAchat> bonAchats;
 
     public Fournisseur() {
+    }
+
+    public Fournisseur(Long idFourn, String nomSociete, String adressFourn, String mobilite, Integer telFourn, String emailFourn, List<BonAchat> bonAchats) {
+        this.idFourn = idFourn;
+        this.nomSociete = nomSociete;
+        this.adressFourn = adressFourn;
+        mobilite = mobilite;
+        this.telFourn = telFourn;
+        this.emailFourn = emailFourn;
+        this.bonAchats = bonAchats;
     }
 
     public Fournisseur(String nomSociete, String adressFourn, Integer telFourn, String emailFourn, List<BonAchat> bonAchats) {

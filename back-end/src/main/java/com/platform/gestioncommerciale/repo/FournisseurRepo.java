@@ -9,4 +9,11 @@ import java.util.List;
 @Repository
 public interface FournisseurRepo extends JpaRepository<Fournisseur,Long> {
     List<Fournisseur> findByNomSociete(String NomSociete);
+
+    int countByMobilite(String nationalite);
+
+    int countByMobiliteNot(String nationalite);
+
+
+
 }

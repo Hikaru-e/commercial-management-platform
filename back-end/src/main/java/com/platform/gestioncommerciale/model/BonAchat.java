@@ -1,5 +1,7 @@
 package com.platform.gestioncommerciale.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -21,10 +23,13 @@ public class BonAchat {
 
     @ManyToOne
     @JoinColumn(name = "idFourn")
+    @JsonBackReference("fournisseur-bonAchat")
+    // @JsonBackReference breaks the circular reference by not serializing the back reference
     private Fournisseur fournisseur;
 
     @ManyToOne
     @JoinColumn(name = "idUser")
+    @JsonBackReference("utilisateur-bonAchat")
     private Utilisateur utilisateurBonAchat;
 
 
@@ -32,6 +37,7 @@ public class BonAchat {
     @JoinTable(name="bonachat_produit",
             joinColumns = @JoinColumn(name="idBonAchat"),
             inverseJoinColumns = @JoinColumn(name="idPdt"))
+    @JsonManagedReference("bonAchat-produit")
     private List<Produit> produitsBonAchats;
 
     public BonAchat() {
@@ -125,8 +131,3 @@ public class BonAchat {
                 '}';
     }
 }
-
-
-
-
-

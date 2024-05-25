@@ -29,4 +29,14 @@ public class FactureService {
     public Optional<Facture> getFactureById(Long id) {
         return factureRepo.findById(id);
     }
+
+    // Nouvelle méthode pour obtenir la somme des montants des factures
+    public Float getSumOfAllFactures() {
+        List<Facture> factures = factureRepo.findAll();
+        return factures.stream()
+                .map(Facture::getMontantFacture)
+                .reduce(0f, Float::sum);
+    }
+
+
 }

@@ -51,4 +51,9 @@ public class FournisseurController {
         return fournisseurService.getHistoriqueAchats(id);
     }
 
+    @GetMapping("/countby")
+    public List<Integer> countFournisseursByNationality() {
+        return fournisseurService.countFournisseursByMobilite();
+    }
+
 }
