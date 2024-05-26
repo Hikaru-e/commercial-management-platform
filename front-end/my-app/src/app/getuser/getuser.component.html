@@ -1,0 +1,32 @@
+<app-headr></app-headr>
+<!-- getproduct.component.html -->
+<mat-list>
+  <div class="column-titles">
+    <div class="column-title"></div>
+    <div class="column-title">ID</div>
+    <div class="column-title">Nickname</div>
+    <div class="column-title">Name</div>
+    <div class="column-title">Email</div>
+    <div class="column-title">Password</div>
+    <div class="column-title">Role </div>
+    <div class="column-title">Modifier</div>
+    <div class="column-title">Supprimer</div>
+  </div>
+  <mat-list-item *ngFor="let user of users">
+    <div class="user-item">
+      <div mat-line>{{ user.idUser}}</div>
+      <div mat-line>{{ user.nomUser}}</div>
+      <div mat-line>{{ user.prenomUser }}</div>
+      <div mat-line>{{ user.emailUser }}</div>
+      <div mat-line>{{ user.passwordUser }}</div>
+      <div mat-line>{{ user.roleUser }}</div>
+      <button mat-icon-button color="primary" (click)="startEditingUser(user.idPdt)">
+        <mat-icon>edit</mat-icon>
+      </button>        
+      <button mat-icon-button color="warn" (click)="deleteUser(user.idPdt)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-list-item>
+</mat-list>
+<app-footr></app-footr>

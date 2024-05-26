@@ -1,0 +1,31 @@
+<app-headr></app-headr>
+
+<div class="search-product">
+    <h2>Search Product by Name</h2>
+    <h2 mat-dialog-title>Informations sur produit</h2>
+
+    <div *ngIf="searchResults !== 0"></div>
+
+    <table class="product-table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Barcode</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+        </tr>
+        <tr>
+            <td>{{ searchResults.idPdt }}</td>
+            <td>{{ searchResults.namePdt }}</td>
+            <td>{{ searchResults.bareCode }}</td>
+            <td>{{ searchResults.description }}</td>
+            <td>{{ searchResults.categoriePdt }}</td>
+            <td>{{ searchResults.prixPdt }}</td>
+            <td>{{ searchResults.nvStockPdt }}</td>
+        </tr>
+    </table>
+
+    <app-footr></app-footr>
+</div>

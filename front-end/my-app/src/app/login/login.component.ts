@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginAuthService } from '../login-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,30 +9,55 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+  loginForm: FormGroup | any;
 
-  constructor(private formBuilder: FormBuilder) {
-    // Initialise loginForm dans le constructeur
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private loginAuthService: LoginAuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    // Vous pouvez également initialiser loginForm dans ngOnInit si nécessaire
+    this.loginForm = this.formBuilder.group({
+      Email: ['', Validators.required],
+      Password: ['', Validators.required]
+    });
   }
-
   onSubmit() {
     if (this.loginForm.valid) {
-      // Vous pouvez ajouter ici la logique pour traiter le formulaire
-      const username = this.loginForm.value.username;
-      const password = this.loginForm.value.password;
-      console.log('Username:', username);
-      console.log('Password:', password);
+      const Email = this.loginForm.get('Email')?.value;
+      const Password = this.loginForm.get('Password')?.value;
+  
+      this.loginAuthService.login(Email, Password).subscribe(
+        (response: any) => {
+          console.log('Login successful');
+  
+          // Vérifiez si la réponse est null ou ne contient pas la propriété 'role'
+          if (response && response.roleUser) {
+            const roleUser = response.roleUser;
+            this.router.navigate(['/headr'], { queryParams: { role: roleUser } });
+            if (roleUser === 'admin') {
+              this.router.navigate(['/Home']);
+            } else if (roleUser === 'utilisateur') {
+              this.router.navigate(['/Home']);
+            } else {
+              console.error('Unknown role:', roleUser);
+              // Gérer le rôle inconnu
+            }
+          } else {
+            console.error('Role not found in response:', response);
+            // Gérer le cas où la propriété 'role' n'est pas présente dans la réponse
+          }
+        },
+        error => {
+          console.error('Login failed:', error);
+          // Gérer l'échec de la connexion
+        }
+      );
     } else {
-      // Affichez un message d'erreur ou effectuez une action appropriée si le formulaire n'est pas valide
-      console.log('Veuillez remplir tous les champs');
+      console.log('Please fill out all fields');
     }
   }
+  
+  
 }

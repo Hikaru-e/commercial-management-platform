@@ -1,0 +1,31 @@
+<div class="add-product-form">
+    <h2>Add Product</h2>
+    <form (ngSubmit)="addUser()">
+      <div class="form-group">
+        <label for="userId">User Id:</label>
+        <input type="text" id="productId" name="productId" [(ngModel)]="newUser.idUser" required>
+      </div>
+      <div class="form-group">
+        <label for="nomUser">User NickName:</label>
+        <input type="text" id="nomUser" name="nomUser" [(ngModel)]="newUser.nomUser" required>
+      </div>
+      <div class="form-group">
+        <label for="prenomUser">User name</label>
+        <input type="text" id="prenomUser" name="prenomUser" [(ngModel)]="newUser.prenomUser" required>
+      </div>
+      <div class="form-group">
+        <label for="emailUser">User Email:</label>
+        <input type="text" id="emailUser" name="emailUser" [(ngModel)]="newUser.emailUser" required>
+      </div>
+      <div class="form-group">
+        <label for="passwordUser"> User Password</label>
+        <input type="text" id="passwordUser" name="passwordUser" [(ngModel)]="newUser.passwordUser" required>
+      </div>
+      <div class="form-group">
+        <label for="roleUser">User role :</label>
+        <input type="text" id="roleUser" name="roleUser" [(ngModel)]="newUser.roleUser" required>
+      </div>
+      <button type="submit" >Add</button>
+    </form>
+  </div>
+  

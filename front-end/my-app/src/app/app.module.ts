@@ -26,7 +26,6 @@ import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { EditFournisseurDialogComponentComponent } from './fournisseur/edit-fournisseur-dialog-component/edit-fournisseur-dialog-component.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
 import { CommonModule } from '@angular/common'; // Importez CommonModule
 import { HomePageComponent } from './home-page/home-page.component';
 
@@ -35,6 +34,22 @@ import { BondachatComponent } from './bondachat/bondachat.component';
 import { FactureComponent } from './facture/facture.component';
 import { MatTableModule } from '@angular/material/table';
 import { HistoriqueAchatsDialogComponent } from './fournisseur/historique-achats-dialog/historique-achats-dialog.component';
+import { FormsModule } from '@angular/forms';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { ProductsComponent } from './products/products.component';
+import { GetproductComponent } from './getproduct/getproduct.component';
+import { provideHttpClient,withFetch } from '@angular/common/http';
+import { AddproductComponent } from './addproduct/addproduct.component';
+import { FindproductbynameComponent } from './findproductbyname/findproductbyname.component';
+import { EditproductComponent } from './getproduct/editproduct/editproduct.component';
+import { DeleteproductComponent } from './deleteproduct/deleteproduct.component';
+import { GetuserComponent } from './getuser/getuser.component';
+import { AdduserComponent } from './adduser/adduser.component';
+import { UsersComponent } from './users/users.component';
+import { HeadrComponent } from './headr/headr.component';
+import { FindusersComponent } from './findusers/findusers.component';
+import { HeaderUserComponent } from './header-user/header-user.component';
+import { HelloComponent } from './home/hello/hello.component';
 
 
 @NgModule({
@@ -42,7 +57,6 @@ import { HistoriqueAchatsDialogComponent } from './fournisseur/historique-achats
     AppComponent,
     LoginComponent,
     HeaderComponent,
- 
     ClientComponent,
     FootrComponent,
     EditFournisseurDialogComponentComponent,
@@ -52,10 +66,31 @@ import { HistoriqueAchatsDialogComponent } from './fournisseur/historique-achats
     BondachatComponent,
     FournisseurComponent,
     FactureComponent,
-    HistoriqueAchatsDialogComponent
+    HistoriqueAchatsDialogComponent,
+    AppComponent,
+    LoginComponent,
+    HelloComponent,
+    ClientComponent,
+    FootrComponent,
+    EditClientDialogComponentComponent,
+    ProductsComponent,
+    GetproductComponent,
+    AddproductComponent,
+    FindproductbynameComponent,
+    EditproductComponent,
+    DeleteproductComponent,
+    GetuserComponent,
+    AdduserComponent,
+    UsersComponent,
+    HeadrComponent,
+    FindusersComponent,
+    HeaderUserComponent,
+    LoginComponent,
+    AppComponent,
    
   ],
   imports: [
+    MatToolbarModule,
     BrowserModule,
     MatTableModule,
     AppRoutingModule,
@@ -70,11 +105,19 @@ import { HistoriqueAchatsDialogComponent } from './fournisseur/historique-achats
      BaseChartDirective,
      CommonModule,
      HttpClientModule,
-     BrowserAnimationsModule
+     BrowserAnimationsModule,
+     FormsModule,
+     BrowserModule,
+     FormsModule,
+     AppRoutingModule,
    
   ],
-  providers: [provideCharts(withDefaultRegisterables())],
-  bootstrap: [AppComponent],
-
+  providers: [
+    provideClientHydration(),
+    provideAnimationsAsync(),
+    provideHttpClient(withFetch())
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
+

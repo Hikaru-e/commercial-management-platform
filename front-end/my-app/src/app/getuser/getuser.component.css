@@ -1,0 +1,39 @@
+.user-item { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; /* Ensure items are vertically centered */
+  }
+  
+  .product-item img {
+    max-width: 150px; /* Width for slightly larger images */
+    max-height: 200px; /* Increased height for taller images */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+  }
+  
+  mat-card { 
+    max-width: 400px; 
+    margin: 0 auto; 
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; 
+    transform: translateY(-100%); 
+    opacity: 0; 
+  }
+  
+  mat-card.ng-animating { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+  
+  .column-titles { 
+    display: flex; 
+    justify-content: space-between; 
+    padding: 10px; 
+    background-color: #f0f0f0; 
+    border-bottom: 1px solid #ccc; 
+    font-weight: bold; 
+  }
+  
+  .column-title { 
+    flex: 1; 
+    text-align: center; 
+  }
+  

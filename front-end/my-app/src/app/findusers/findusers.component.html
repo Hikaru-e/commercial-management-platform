@@ -1,0 +1,31 @@
+<app-headr></app-headr>
+<div class="search-product">
+    <h2>Search Product by Name</h2>
+    <input type="text" placeholder="Enter user name" [(ngModel)]="UserName">
+    <button (click)="searchUserByName()">Search</button>
+    <h2 mat-dialog-title>Informations sur l'utilisateur</h2>
+
+    <div *ngIf="searchResults !== 0"></div>
+
+    <table class="product-table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Role</th>
+        </tr>
+        <tr>
+            <td>{{ searchResults.idUser }}</td>
+            <td>{{ searchResults.nomUser }}</td>
+            <td>{{ searchResults.prenomUser }}</td>
+            <td>{{ searchResults.emailUser }}</td>
+            <td>{{ searchResults.passwordUser }}</td>
+            <td>{{ searchResults.roleUser }}</td>
+        </tr>
+    </table>
+
+    <app-footr></app-footr>
+</div>

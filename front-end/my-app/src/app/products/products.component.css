@@ -1,0 +1,15 @@
+.button-grid {
+  display: flex;
+  justify-content: space-around;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  margin: 0 20px; /* Ajuster la marge entre les icônes */
+}
+
+.action-button img {
+  width: 100px; /* Augmenter la largeur des icônes */
+  height: 100px; /* Augmenter la hauteur des icônes */
+}

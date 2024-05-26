@@ -1,0 +1,24 @@
+<header class="header">
+  <div class="logo">Mon Logo</div>
+  <div class="search-bar">
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="Rechercher...">
+    </mat-form-field>
+    <button mat-icon-button class="search-button">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+  <button mat-button class="additional-button" [routerLink]="['/Home']">Accueil</button>
+  <button mat-button class="additional-button" [routerLink]="['/products']">Produits</button>
+  <button mat-button class="additional-button" [routerLink]="['/fournisseurs']">Fournisseurs</button>
+  <button mat-button class="additional-button" [routerLink]="['/factures']">Factures</button>
+  <button mat-button class="additional-button" [routerLink]="['/Bons']">Bons d'achats</button>
+  <div class="menu">
+    <button mat-icon-button class="menu-button" (mouseenter)="showMenu = true" (mouseleave)="showMenu = false">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <button mat-button class="additional-button" [routerLink]="['/Bons']">Déconnexion</button>
+    
+  </div>
+</header>

@@ -1,0 +1,40 @@
+<app-headr></app-headr>
+<div class="add-product-form">
+  <h2>Add Product</h2>
+  <form (ngSubmit)="addProduct()">
+    <div class="form-group">
+      <label for="productId">Product Id:</label>
+      <input type="text" id="productId" name="productId" [(ngModel)]="newProduct.idPdt" required>
+    </div>
+    <div class="form-group">
+      <label for="productName">Product Name:</label>
+      <input type="text" id="productName" name="productName" [(ngModel)]="newProduct.namePdt" required>
+    </div>
+    <div class="form-group">
+      <label for="productDescription">Product Description:</label>
+      <input type="text" id="productDescription" name="productDescription" [(ngModel)]="newProduct.description" required>
+    </div>
+    <div class="form-group">
+      <label for="productCate">Product Category:</label>
+      <input type="text" id="productCate" name="productCate" [(ngModel)]="newProduct.categoriePdt" required>
+    </div>
+    <div class="form-group">
+      <label for="productPrice">Product Price:</label>
+      <input type="number" id="productPrice" name="productPrice" [(ngModel)]="newProduct.prixPdt" required>
+    </div>
+    <div class="form-group">
+      <label for="productBarecode">Product Barecode:</label>
+      <input type="number" id="productBarecode" name="productBarecode" [(ngModel)]="newProduct.bareCode" required>
+    </div>
+    <div class="form-group">
+      <label for="productStock">Product Stock:</label>
+      <input type="number" id="productStock" name="productStock" [(ngModel)]="newProduct.nvStockPdt" required>
+    </div>
+    <div class="form-group">
+      <label for="productImage">Product Image:</label>
+      <input type="file" id="productImage" (change)="onFileSelected($event)">
+    </div>
+    <button (click)="uploadFile()" [disabled]="!selectedFile">Upload</button>
+  </form>
+</div>
+<app-footr></app-footr>

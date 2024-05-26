@@ -1,0 +1,39 @@
+<app-headr></app-headr>
+<!-- getproduct.component.html -->
+<mat-toolbar>
+  <button mat-raised-button color="primary" (click)="showProductsInStock()">Show Products in Stock</button>
+  <button mat-raised-button style="background-color: deepskyblue;"(click)="showProductsNotInStock()">Show Products Not in Stock</button>
+</mat-toolbar>
+<mat-list>
+  <div class="column-titles">
+    <div class="column-title"></div>
+    <div class="column-title">ID</div>
+    <div class="column-title">Name</div>
+    <div class="column-title">Barecode</div>
+    <div class="column-title">Description</div>
+    <div class="column-title">Catégorie</div>
+    <div class="column-title">Prix</div>
+    <div class="column-title">Stock</div>
+    <div class="column-title">Modifier</div>
+    <div class="column-title">Supprimer</div>
+  </div>
+  <mat-list-item *ngFor="let product of products">
+    <div class="product-item">
+      <div><img [src]="getLocalImagePath(product.imagePath)" alt="Product Image"></div>
+      <div mat-line>{{ product.idPdt }}</div>
+      <div mat-line>{{ product.namePdt }}</div>
+      <div mat-line>{{ product.bareCode }}</div>
+      <div mat-line>{{ product.description }}</div>
+      <div mat-line>{{ product.categoriePdt }}</div>
+      <div mat-line>{{ product.prixPdt }}</div>
+      <div mat-line>{{ product.nvStockPdt }}</div>
+      <button mat-icon-button color="primary" (click)="startEditingProduct(product.idPdt)">
+        <mat-icon>edit</mat-icon>
+      </button>        
+      <button mat-icon-button color="warn" (click)="deleteProduct(product.idPdt)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-list-item>
+</mat-list>
+<app-footr></app-footr>

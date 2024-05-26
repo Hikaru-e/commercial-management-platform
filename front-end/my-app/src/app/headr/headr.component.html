@@ -1,0 +1,14 @@
+<header class="header">
+    <div class="logo">Mon Logo</div>
+    <button mat-button class="additional-button" [routerLink]="['/Home']">Accueil</button>
+    <button mat-button class="additional-button" [routerLink]="['/products']">Produits</button>
+    <button mat-button class="additional-button" [routerLink]="['/users']" *ngIf="roleUser === 'admin'">Utilisateurs</button>
+    <button mat-button class="additional-button" [routerLink]="['/fournisseurs']">Fournisseurs</button>
+    <button mat-button class="additional-button" [routerLink]="['/factures']">Factures</button>
+    <button mat-button class="additional-button" [routerLink]="['/Bons']">Bons d'achats</button>
+    
+
+    <button mat-button class="additional-button" [routerLink]="['/Bons']">Déconnexion</button>
+    
+    
+  </header>
