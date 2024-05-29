@@ -15,7 +15,7 @@ services:
   backend:
     depends_on:
       - mysqldb
-    image: commercialeplatforme/gestion-commercial-backend:latest
+    image: commercialeplatforme/repo_commerciale_platforme:backend-latest
     container_name: gestion-commercial-backend
     build: ./back-end
     restart: on-failure
@@ -36,7 +36,7 @@ services:
     tty: true
 
   frontend: 
-    image: commercialeplatforme/gestion-commercial-frontend:latest
+    image: commercialeplatforme/repo_commerciale_platforme:frontend-latest
     container_name: gestion-commercial-frontend
     build: ./front-end/my-app
     volumes:
